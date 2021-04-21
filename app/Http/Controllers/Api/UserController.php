@@ -32,6 +32,7 @@ class UserController extends Controller
         else
         {
             $user = Auth()->user();
+            $var = 0;
         }
         $transaction_id = Str::random(12);
         $order = $user->orders()
