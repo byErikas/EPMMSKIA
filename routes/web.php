@@ -31,6 +31,7 @@ Route::post('/remove', 'App\Http\Controllers\CartController@remove')->name('cart
 
 Route::get('/categories/{name}', 'App\Http\Controllers\Api\CategoryController@returnCategory')->name('single.category');
 Route::get('/items/{name}', 'App\Http\Controllers\Api\ProductController@returnItem')->name('single.item');
+Route::post('/purchase', 'App\Http\Controllers\Api\UserController@purchase')->name('order.purchase');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -45,7 +46,8 @@ Route::get('/categories', [CategoryController::class, 'index'])->name('category.
 //Only authenticated users
 Route::group(['middleware' => 'auth'], function () {
 
-    //
+    Route::get('orders', 'App\Http\Controllers\ProfileController@orders')->name('user.orders');
+    //Password change page
     Route::get('change-password', 'App\Http\Controllers\ChangePasswordController@index')->name('index.password');
     Route::post('change-password', 'App\Http\Controllers\ChangePasswordController@store')->name('change.password');
 

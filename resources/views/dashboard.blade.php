@@ -21,6 +21,32 @@
                 <li class="breadcrumb-item active" aria-current="page">Catalog</li>
             </ol>
         </nav>
+        @if(session()->has('success_msg'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session()->get('success_msg') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+    @endif
+    @if(session()->has('alert_msg'))
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ session()->get('alert_msg') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+    @endif
+    @if(count($errors) > 0)
+        @foreach($errors0>all() as $error)
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ $error }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        @endforeach
+    @endif
         <div class="row justify-content-center">
             <div class="col-lg-12">
                 <div class="row">
@@ -33,19 +59,19 @@
                     @foreach($products as $pro)
                         <div class="col-lg-3">
                             <div class="card" style="margin-bottom: 20px; height: auto;">
-                                <img src="https://dummyimage.com/600x600/828282/ffffff"
+                                <img src="{{$pro->img_path}}"
                                      class="card-img-top mx-auto"
                                      style="height: 150px; width: 150px;display: block;"
-                                     alt="https://dummyimage.com/600x600/828282/ffffff">
+                                     alt="{{$pro->img_path}}">
                                 <div class="card-body">
                                     <a href="/items/{{$pro->slug}}"><h6 class="card-title">{{ $pro->name }}</h6></a>
-                                    <p>${{ $pro->price }}</p>
+                                    <p>{{ $pro->price }}€</p>
                                     <form action="{{ route('cart.store') }}" method="POST">
                                         {{ csrf_field() }}
                                         <input type="hidden" value="{{ $pro->id }}" id="id" name="id">
                                         <input type="hidden" value="{{ $pro->name }}" id="name" name="name">
                                         <input type="hidden" value="{{ $pro->price }}" id="price" name="price">
-                                        <input type="hidden" value="https://dummyimage.com/600x600/828282/ffffff" id="img" name="img">
+                                        <input type="hidden" value="{{$pro->img_path}}" id="img" name="img">
                                         <input type="hidden" value="{{ $pro->slug }}" id="slug" name="slug">
                                         <input type="hidden" value="1" id="quantity" name="quantity">
                                         <div class="card-footer" style="background-color: white;">

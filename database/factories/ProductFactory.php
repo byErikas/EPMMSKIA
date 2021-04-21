@@ -33,7 +33,8 @@ class ProductFactory extends Factory
             'name' => $name,
             'slug' => Str::slug($name),
             'description' => $this->faker->realText(320),
-            'price' => $this->faker->numberBetween(10, 1000)
+            'price' => $this->faker->numberBetween(10, 1000),
+            'img_path' => 'https://dummyimage.com/600x600/828282/ffffff'
         ];
     }
 }

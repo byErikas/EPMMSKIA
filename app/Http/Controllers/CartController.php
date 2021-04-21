@@ -33,7 +33,7 @@ class CartController extends Controller
                 'slug' => $request->slug
             )
         ));
-        return redirect()->route('cart.index')->with('success_msg', 'Item is Added to Cart!');
+        return redirect()->back()->with('success_msg', 'Item added to cart!');
     }
 
     public function clear() {
@@ -43,7 +43,7 @@ class CartController extends Controller
 
     public function remove(Request $request){
         \Cart::remove($request->id);
-        return redirect()->route('cart.index')->with('success_msg', 'Item is removed!');
+        return redirect()->route('cart.index')->with('success_msg', 'Item removed!');
     }
 
     public function update(Request $request){
@@ -54,6 +54,6 @@ class CartController extends Controller
                     'value' => $request->quantity
                 ),
         ));
-        return redirect()->route('cart.index')->with('success_msg', 'Cart is Updated!');
+        return redirect()->route('cart.index')->with('success_msg', 'Cart updated!');
     }
 }

@@ -61,7 +61,7 @@
                 @foreach($cartCollection as $item)
                     <div class="row">
                         <div class="col-lg-3">
-                            <img src="https://dummyimage.com/600x600/828282/ffffff" class="img-thumbnail" width="200" height="200">
+                            <img src="{{$item->img_path}}" class="img-thumbnail" width="200" height="200">
                         </div>
                         <div class="col-lg-5">
                             <p>
@@ -107,7 +107,32 @@
                         </ul>
                     </div>
                     <br><a href="/dashboard" class="btn btn-dark">Continue Shopping</a>
-                    <a href="/checkout" class="btn btn-success">Proceed To Checkout</a>
+
+                    {!! Form::open(['route' => ['order.purchase'], 'method' => 'POST']) !!}
+                    <div class="form-group">
+                        <p style="margin-top: 5px;">Buyer details:</p>
+                        {!! Form::label('name', 'Name:', ['class' => 'control-label']) !!}
+                        {!! Form::text('name', '', ['id' => 'name', 'class' => 'form-control']) !!}
+
+                        <p style="margin-top: 2px">{!! Form::label('name', 'Email:', ['class' => 'control-label']) !!}
+                            {!! Form::text('email', '', ['id' => 'email', 'class' => 'form-control']) !!}</p>
+
+                        <p style="margin-top: 2px">{!! Form::label('name', 'Address:', ['class' => 'control-label']) !!}
+                            {!! Form::text('address', '', ['id' => 'address', 'class' => 'form-control']) !!}</p>
+
+                        <p style="margin-top: 2px">{!! Form::label('name', 'City:', ['class' => 'control-label']) !!}
+                                {!! Form::text('city', '', ['id' => 'city', 'class' => 'form-control']) !!}</p>
+
+                        <p style="margin-top: 2px">{!! Form::label('name', 'State:', ['class' => 'control-label']) !!}
+                            {!! Form::text('state', '', ['id' => 'state', 'class' => 'form-control']) !!}</p>
+
+                        <p style="margin-top: 2px">{!! Form::label('name', 'Zip Code:', ['class' => 'control-label']) !!}
+                            {!! Form::text('zip_code', '', ['id' => 'zip_code', 'class' => 'form-control']) !!}</p>
+
+                            <div class="row">
+                                    <div style="display: flex; flex-wrap: nowrap; margin-top: 10px;">
+                                        <button type="submit" class="btn btn-block btn-success"><a>Place order</a></button>
+                                        {!! Form::close() !!}
                 </div>
             @endif
         </div>

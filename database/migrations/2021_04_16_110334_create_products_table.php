@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('slug')->unique();
             $table->text('description');
             $table->integer('price')->default(0);
+            $table->string('img_path')->nullable();
             $table->timestamps();
         });
     }

@@ -15,13 +15,39 @@
                 <li class="breadcrumb-item active" aria-current="page">{{$item->name}}</li>
             </ol>
         </nav>
+        @if(session()->has('success_msg'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session()->get('success_msg') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+    @endif
+    @if(session()->has('alert_msg'))
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ session()->get('alert_msg') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+    @endif
+    @if(count($errors) > 0)
+        @foreach($errors0>all() as $error)
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ $error }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        @endforeach
+    @endif
         </div>
 
     <div class="itcontainer col-lg-12" style="margin-top: 40px">
 
   <!-- Left Column / Image -->
   <div class="left-column">
-    <img src="https://dummyimage.com/600x600/828282/ffffff">
+    <img src="{{$item->img_path}}">
   </div>
 
   <!-- Right Column -->
@@ -38,13 +64,13 @@
 
     <!-- Product Pricing -->
     <div class="product-price">
-      <span>{{$item->price}} Eur.</span>
+      <span>{{$item->price}}€</span>
       <form action="{{ route('cart.store') }}" method="POST">
         {{ csrf_field() }}
         <input type="hidden" value="{{ $item->id }}" id="id" name="id">
         <input type="hidden" value="{{ $item->name }}" id="name" name="name">
         <input type="hidden" value="{{ $item->price }}" id="price" name="price">
-        <input type="hidden" value="https://dummyimage.com/600x600/828282/ffffff" id="img" name="img">
+        <input type="hidden" value="{{ $item->img_path}}" id="img" name="img">
         <input type="hidden" value="{{ $item->slug }}" id="slug" name="slug">
         <input type="hidden" value="1" id="quantity" name="quantity">
         <div class="card-footer" style="background-color: white;">

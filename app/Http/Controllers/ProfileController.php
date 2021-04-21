@@ -58,4 +58,19 @@ class ProfileController extends Controller
          **/
         return back();
     }
+
+    public function orders()
+    {
+        /**
+         * fetching the user model
+         **/
+        $user = Auth::user();
+        //var_dump($user);
+        $orders = $user->orders;
+       // dd($orders);
+        /**
+         * Passing the user data to profile view
+         */
+        return view('order')->with(['orders' => $orders]);
+    }
 }
