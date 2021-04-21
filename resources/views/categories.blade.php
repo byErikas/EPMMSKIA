@@ -14,29 +14,31 @@
         </div>
     </div>-->
     <x-slot name="slot">
-    <div class="container col-lg-12" style="margin-top: 40px">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Categories</li>
-            </ol>
-        </nav>
-        <div class="row justify-content-center">
-            <div class="col-lg-12">
-                <hr>
-                <div class="row">
-                    @foreach($categories as $pro)
-                        <div class="col-lg-3">
-                            <div class="card" style="margin-bottom: 20px; height: auto;">
-                                <div class="card-body">
-                                    <a href="/categories/{{$pro->slug}}"><h6 class="card-title">{{ $pro->name }}</h6></a>
+        <div class="container col-lg-12" style="margin-top: 40px">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Categories</li>
+                </ol>
+            </nav>
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <hr>
+                    <div class="row">
+                        @foreach ($categories as $pro)
+                            <div class="col-lg-3">
+                                <div class="card" style="margin-bottom: 20px; height: auto;">
+                                    <div class="card-body">
+                                        <a href="/categories/{{ $pro->slug }}">
+                                            <h6 class="card-title">{{ $pro->name }}</h6>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</x-slot>
+    </x-slot>
 </x-app-layout>

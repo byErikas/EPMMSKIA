@@ -23,7 +23,7 @@
                             {!! Form::text('address', $value = $user->address, ['id' => 'address', 'class' => 'form-control']) !!}</p>
 
                         <p style="margin-top: 1rem">{!! Form::label('name', 'City:', ['class' => 'control-label']) !!}
-                                {!! Form::text('city', $value = $user->city, ['id' => 'city', 'class' => 'form-control']) !!}</p>
+                            {!! Form::text('city', $value = $user->city, ['id' => 'city', 'class' => 'form-control']) !!}</p>
 
                         <p style="margin-top: 1rem">{!! Form::label('name', 'State:', ['class' => 'control-label']) !!}
                             {!! Form::text('state', $value = $user->state, ['id' => 'state', 'class' => 'form-control']) !!}</p>
@@ -31,17 +31,16 @@
                         <p style="margin-top: 1rem">{!! Form::label('name', 'Zip Code:', ['class' => 'control-label']) !!}
                             {!! Form::text('zip_code', $value = $user->zip_code, ['id' => 'zip_code', 'class' => 'form-control']) !!}</p>
 
-                            <div class="row">
-                                    <div style="display: flex; flex-wrap: nowrap; margin-top: 10px;">
-                                        <button type="submit" class="btn btn-block btn-success"><a>Save Changes</a></button>
-                                        {!! Form::close() !!}
-                                        <form action="change-password">
-                                            <button type="submit" class="btn btn-block btn-warning" style="margin-left: 10px">Change Password</button>
-                                        </form>
-
-
-                                    </div>
+                        <div class="row">
+                            <div style="display: flex; flex-wrap: nowrap; margin-top: 10px;">
+                                <button type="submit" class="btn btn-block btn-success"><a>Save Changes</a></button>
+                                {!! Form::close() !!}
+                                <form action="change-password">
+                                    <button type="submit" class="btn btn-block btn-warning"
+                                        style="margin-left: 10px">Change Password</button>
+                                </form>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
