@@ -10,6 +10,14 @@ class Product extends Model
 {
     use HasFactory, Rateable;
 
+    protected $fillable = [
+        'name',
+        'slug',
+        'description',
+        'price',
+        'img_path'
+    ];
+
     protected $guarded = [];
 
     public function categories()

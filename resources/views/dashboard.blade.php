@@ -4,16 +4,38 @@
             {{ __('Items') }}
         </h2>
     </x-slot>
-    <!--<div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're on the default page!
-                </div>
-            </div>
+
+    <!--Session alerts -->
+    @if (session()->has('success_msg'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session()->get('success_msg') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
         </div>
-    </div>-->
+    @endif
+    @if (session()->has('alert_msg'))
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ session()->get('alert_msg') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+    @endif
+    @if (count($errors) > 0)
+        @foreach ($errors0 > all() as $error)
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ $error }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        @endforeach
+    @endif
+    <!--End session alerts -->
+
     <x-slot name="slot">
+        <!--Crumbs -->
         <div class="container col-lg-12" style="margin-top: 40px">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -21,32 +43,7 @@
                     <li class="breadcrumb-item active" aria-current="page">Catalog</li>
                 </ol>
             </nav>
-            @if (session()->has('success_msg'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session()->get('success_msg') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-            @endif
-            @if (session()->has('alert_msg'))
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    {{ session()->get('alert_msg') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-            @endif
-            @if (count($errors) > 0)
-                @foreach ($errors0 > all() as $error)
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ $error }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                @endforeach
-            @endif
+
             <div class="row justify-content-center">
                 <div class="col-lg-12">
                     <div class="row">
@@ -60,7 +57,8 @@
                             <div class="col-lg-3">
                                 <div class="card" style="margin-bottom: 20px; height: auto;">
                                     <img src="{{ $pro->img_path }}" class="card-img-top mx-auto"
-                                        style="height: 150px; width: 150px;display: block;" alt="{{ $pro->img_path }}">
+                                        style="height: 150px; width: 150px;display: block;"
+                                        alt="{{ $pro->img_path }}">
                                     <div class="card-body">
                                         <a href="/items/{{ $pro->slug }}">
                                             <h6 class="card-title">{{ $pro->name }}</h6>

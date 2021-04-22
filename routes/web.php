@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,7 @@ Route::post('/update', 'App\Http\Controllers\CartController@update')->name('cart
 Route::post('/remove', 'App\Http\Controllers\CartController@remove')->name('cart.remove');
 
 Route::get('/categories/{name}', 'App\Http\Controllers\Api\CategoryController@returnCategory')->name('single.category');
-Route::get('/items/{name}', 'App\Http\Controllers\Api\ProductController@returnItem')->name('single.item');
+Route::get('/items/{name}', 'App\Http\Controllers\ProductController@returnItem')->name('single.item');
 Route::post('/purchase', 'App\Http\Controllers\Api\UserController@purchase')->name('order.purchase');
 
 // Route::get('/dashboard', function () {
@@ -66,15 +67,16 @@ Route::group(['middleware' => 'auth'], function () {
         return view('recommendations');
     })->name('recommendations');
 
-    //Admin page routes
-    Route::get('/admin', function () {
-        if (Auth::user()->is_admin) {
-            return view('admin');
-        } else {
-            return redirect('dashboard');
-        }
-    })->name('admin');
-});
+    //Admin routes
+    Route::group(['middleware' => 'admin'], function () {
 
+        //Admin main
+        Route::get('/admin', function () {return view('admin');})->name('admin');
+
+        //CRUDS
+        Route::resource('product', 'App\Http\Controllers\ProductController');
+
+    });
+    });
 
 require __DIR__ . '/auth.php';
