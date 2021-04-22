@@ -37,6 +37,7 @@
                                         <td>ID</td>
                                         <td>Name</td>
                                         <td>Slug</td>
+                                        <td>Category</td>
                                         <td>Description</td>
                                         <td>Price</td>
                                         <td>Image path</td>
@@ -49,6 +50,9 @@
                                             <td>{{ $product->id }}</td>
                                             <td>{{ $product->name }}</td>
                                             <td>{{ $product->slug }}</td>
+                                            @foreach(json_decode($product->categories) as $item)
+                                            <td>{{ $item->name }}</td>
+                                            @endforeach
                                             <td>{{ $product->description }}</td>
                                             <td>{{ $product->price }}</td>
                                             <td>{{ $product->img_path }}</td>

@@ -28,9 +28,18 @@
                                 @method('PATCH')
                                 @csrf
                                 <div class="form-group">
-
                                     <label for="name"> Name:</label>
                                     <input type="text" class="form-control" name="name" value={{ $product->name }} />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="category">Category:</label>
+                                    <select name="category" class="form-control">
+                                        <option value="">None</option>
+                                        @foreach($categories as $category)
+                                        <option value={{$category->id}}>{{$category->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <div class="form-group">

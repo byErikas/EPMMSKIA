@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Str;
@@ -40,7 +41,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
-        return view('products\edit', compact('product'));
+        $categories = Category::all();
+        return view('products\edit', compact('product'), compact('categories'));
     }
 
     public function update(Request $request, $id)
@@ -53,11 +55,15 @@ class ProductController extends Controller
         ]);
 
         $product = Product::find($id);
+       // $category = Category::where('product_id', '=', $id)->first();
         $product->name =  $request->get('name');
         $product->slug = Str::slug($request->get('name'));
         $product->description = $request->get('description');
         $product->price = $request->get('price');
         $product->img_path = $request->get('img_path');
+        //$category->id = $request->input('category');
+        //dd($product->categories->first()->pivot->category_id);
+        $product->categories->first()->pivot->category_id = $request->input('category'); //SHIT DONT WORK
         $product->save();
 
         return redirect('/product')->with('success', 'Product updated!');
