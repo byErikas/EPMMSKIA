@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <!--Session alerts -->
+    <!--Session alerts cart -->
     @if (session()->has('success_msg'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session()->get('success_msg') }}
@@ -22,17 +22,7 @@
             </button>
         </div>
     @endif
-    @if (count($errors) > 0)
-        @foreach ($errors0 > all() as $error)
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ $error }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-        @endforeach
-    @endif
-    <!--End session alerts -->
+    <!--End session alerts cart -->
 
     <x-slot name="slot">
         <!--Crumbs -->
@@ -59,16 +49,6 @@
                     </button>
                 </div>
             @endif
-            @if (count($errors) > 0)
-                @foreach ($errors0 > all() as $error)
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ $error }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                @endforeach
-            @endif
             <div class="row justify-content-center">
                 <div class="col-lg-7">
                     <br>
@@ -82,7 +62,8 @@
                     @foreach ($cartCollection as $item)
                         <div class="row">
                             <div class="col-lg-3">
-                                <img src="{{ $item->img_path }}" class="img-thumbnail" width="200" height="200">
+
+                                <img src="{{ $item->attributes->image}}" class="img-thumbnail" width="200" height="200">
                             </div>
                             <div class="col-lg-5">
                                 <p>
@@ -131,6 +112,16 @@
                         </ul>
                     </div>
                     <br><a href="/dashboard" class="btn btn-dark">Continue Shopping</a>
+
+                    @if ($errors->any())
+                    <div class="alert alert-danger" style="margin-top: 15px;">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div><br />
+                @endif
 
                     {!! Form::open(['route' => ['order.purchase'], 'method' => 'POST']) !!}
                     <div class="form-group">

@@ -5,38 +5,30 @@
         </h2>
     </x-slot>
 
-    <!--Session alerts -->
-    @if (session()->has('success_msg'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session()->get('success_msg') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>
-        </div>
-    @endif
-    @if (session()->has('alert_msg'))
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            {{ session()->get('alert_msg') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>
-        </div>
-    @endif
-    @if (count($errors) > 0)
-        @foreach ($errors0 > all() as $error)
+
+    <x-slot name="slot">
+        <div class="container col-lg-12" style="margin-top: 40px">
+        <!--Session alerts  -->
+        @if (session()->has('success_msg'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ $error }}
+                {{ session()->get('success_msg') }}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-        @endforeach
-    @endif
-    <!--End session alerts -->
+        @endif
+        @if (session()->has('alert_msg'))
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ session()->get('alert_msg') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        @endif
+        <!--End session alerts  -->
 
-    <x-slot name="slot">
         <!--Crumbs -->
-        <div class="container col-lg-12" style="margin-top: 40px">
+
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Home</a></li>

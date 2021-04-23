@@ -11,26 +11,33 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function purchase(Request $request) {
-        if(!Auth::check())
-        {
+    public function purchase(Request $request)
+    {
+        if (!Auth::check()) {
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required|unique:users',
+                'address' => 'required|numeric',
+                'city' => 'required',
+                'state' => 'required',
+                'zip_code' => 'required'
+            ]);
+
             $user = User::firstOrCreate(
                 [
-                'email' => $request->input('email'),
+                    'email' => $request->input('email'),
                 ],
                 [
-                'password' => Hash::make('password'),
-                'name' => $request->input('name'),
-                'address' => $request->input('address'),
-                'city' => $request->input('city'),
-                'state' => $request->input('state'),
-                'zip_code' => $request->input('zip_code')
+                    'password' => Hash::make('password'),
+                    'name' => $request->input('name'),
+                    'address' => $request->input('address'),
+                    'city' => $request->input('city'),
+                    'state' => $request->input('state'),
+                    'zip_code' => $request->input('zip_code')
                 ]
-                );
+            );
             Auth::login($user);
-        }
-        else
-        {
+        } else {
             $user = Auth()->user();
         }
         $transaction_id = Str::random(12);
@@ -41,7 +48,7 @@ class UserController extends Controller
             ]);
 
         $cart_items = \Cart::getContent();
-        foreach($cart_items as $item) {
+        foreach ($cart_items as $item) {
             $order->products()->attach($item['id'], ['quantity' => $item->quantity]);
         }
 
