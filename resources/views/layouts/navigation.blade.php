@@ -13,11 +13,11 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <div class="hidden sm:flex sm:items-center sm:ml-6">
-                        <a href="/categories">
+                        {{-- <a href="/categories"> --}}
                             <x-nav-link :href="route('category.index')">
                                 <div>Items</div>
                             </x-nav-link>
-                        </a>
+                        {{-- </a> --}}
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
                                 <button
