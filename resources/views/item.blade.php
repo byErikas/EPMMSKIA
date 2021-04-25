@@ -57,9 +57,31 @@
                 <div class="product-description">
                     <span>{{ $category }}</span>
                     <h1>{{ $item->name }}</h1>
-                    <!--<h3>{{ $ratings }}</h3> -->
+                    <div style="display: flex; align-items: flex-end;">
+                        <h4>Rating: {{ number_format((float) $ratings, 1, '.', '') }}</h4>
+                        @if (Auth::check())
+                            <form action="{{ route('single.item.rate', $item->id) }}" method="POST">
+                                {{ csrf_field() }}
+                                <div style="display: flex;">
+                                    <input type="hidden" value="{{ $item->id }}" id="id" name="id">
+                                    <select name="rating" class="form-control" style="width: 100px; margin-left: 15px;">
+                                        <option value='1'>1</option>
+                                        <option value='2'>2</option>
+                                        <option value='3'>3</option>
+                                        <option value='4'>4</option>
+                                        <option value='5'>5</option>
+                                    </select>
+                                    <button class="btn btn-block btn-success" type="submit" style="margin-left: 15px;">
+                                        Rate
+                                    </button>
+                                </div>
+                            </form>
+                        @endif
+
+                    </div>
+
                     <!-- would be rating field-->
-                    <p>{{ $item->description }}</p>
+                    <p style="margin-top: 10px;">{{ $item->description }}</p>
 
                 </div>
 

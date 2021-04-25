@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Nagy\LaravelRating\Traits\Rate\Rateable;
+use willvincent\Rateable\Rateable;
 
 class Product extends Model
 {

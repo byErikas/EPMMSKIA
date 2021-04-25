@@ -40,6 +40,7 @@
                                         <td>Category</td>
                                         <td>Description</td>
                                         <td>Price</td>
+                                        <td>Rating</td>
                                         <td>Image path</td>
                                         <td colspan=2>Actions</td>
                                     </tr>
@@ -55,6 +56,7 @@
                                             @endforeach
                                             <td>{{ $product->description }}</td>
                                             <td>{{ $product->price }}</td>
+                                            <td>{{ $product->averageRating }}</td>
                                             <td>{{ $product->img_path }}</td>
                                             <td>
                                                 <a href="{{ route('product.edit', $product->id) }}"

@@ -12,6 +12,11 @@ class ProductController extends Controller
     public function rateItem(Request $request)
     {
         //rate item from given request
+        //$user = Auth()->user();
+        $item = Product::find($request->get('id'));
+        $item->rateOnce($request->get('rating'));
+        //dd($item->ratings);
+        return redirect()->back();
     }
 
     public function returnItem($slug)
@@ -21,9 +26,10 @@ class ProductController extends Controller
             return redirect('dashboard');
         }
 
-        $rating = $item->ratingsAvg();
+        $rating = $item->averageRating;
 
         $category = $item->categories->first()->name;
+        //dd($item);
         return view('item')->with([
             'item' => $item,
             'category' => $category,

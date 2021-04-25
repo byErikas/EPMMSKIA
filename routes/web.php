@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('change-password', 'App\Http\Controllers\ChangePasswordController@store')->name('change.password');
 
     //Rating
-    Route::post('/rate', 'App\Http\Controllers\Api\ProductController@rateItem')->name('rate.item');
+    Route::post('/items/{name}', 'App\Http\Controllers\ProductController@rateItem')->name('single.item.rate');
 
     //Profile page routes
     Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->name('profile.show');
