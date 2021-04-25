@@ -49,6 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
         //CRUDS
         Route::resource('product', 'App\Http\Controllers\ProductController');
         Route::resource('category', 'App\Http\Controllers\CategoryController');
+        Route::resource('user', 'App\Http\Controllers\UserController');
     });
 });
 
@@ -68,7 +69,7 @@ Route::post('/remove', 'App\Http\Controllers\CartController@remove')->name('cart
 Route::get('/categories/{name}', 'App\Http\Controllers\CategoryController@returnCategory')->name('single.category');
 Route::get('/categories', 'App\Http\Controllers\CategoryController@allIndex')->name('category.index');
 Route::get('/items/{name}', 'App\Http\Controllers\ProductController@returnItem')->name('single.item');
-Route::post('/purchase', 'App\Http\Controllers\Api\UserController@purchase')->name('order.purchase');
+Route::post('/purchase', 'App\Http\Controllers\UserController@purchase')->name('order.purchase');
 //END GLOBAL SHOP ROUTES
 
 
