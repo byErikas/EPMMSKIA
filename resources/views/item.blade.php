@@ -105,6 +105,29 @@
                         </div>
                     </form>
                 </div>
+                <table class="table table-striped">
+                    <p style="margin-top: 20px;">Simillar to <b>{{ $item->name }}</b></p>
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Category</td>
+                            <td>Price</td>
+                            <td>Rating</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($similar as $product)
+                            <tr>
+                                <td>{{ $product->name }}</td>
+                                @foreach (json_decode($product->categories) as $item)
+                                    <td>{{ $item->name }}</td>
+                                @endforeach
+                                <td>{{ $product->price }}</td>
+                                <td>{{ number_format((float) $product->averageRating, 1, '.', '') }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </x-slot>

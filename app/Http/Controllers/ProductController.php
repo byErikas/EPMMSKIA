@@ -6,6 +6,8 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Str;
+use Config;
+use Illuminate\Database\Eloquent\Collection;
 
 class ProductController extends Controller
 {
@@ -27,13 +29,25 @@ class ProductController extends Controller
         }
 
         $rating = $item->averageRating;
-
         $category = $item->categories->first()->name;
-        //dd($item);
+
+        //ITEM TO ITEM FILTERING
+        $python_exe = \config('var.python');
+        $script = \config('var.item_to_item');
+        $output = shell_exec("$python_exe $script $item->id 5");
+        $your_array = explode("\n", $output);
+        $similar = collect([]);
+        foreach ($your_array as $suggestion) {
+            if ($suggestion != null) {
+                $similar->add(Product::find($suggestion));
+            }
+        }
+
         return view('item')->with([
             'item' => $item,
             'category' => $category,
-            'ratings' => $rating
+            'ratings' => $rating,
+            'similar' => $similar
         ]);
     }
 
