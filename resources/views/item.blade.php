@@ -115,6 +115,7 @@
                     </div>
                     <div class="p-6 bg-white border-b border-gray-200" style="margin-top: 175px;">
                         <div class="product-description">
+                            <hr>
                             <span>Simmilar to <h5>{{ $item->name }}:</h5></span>
                         </div>
                         <div class="row">

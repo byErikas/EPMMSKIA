@@ -28,22 +28,21 @@
                     @endif
                     <!--End session alerts  -->
 
-                    <!--Crumbs -->
 
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Catalog</li>
-                        </ol>
-                    </nav>
 
                     <div class="row justify-content-center">
                         <div class="col-lg-12">
-                            <div class="row">
-                                <div class="col-lg-7" style="margin-left: 5px;">
-                                    <h4>Welcome to the catalog!</h4>
-                                </div>
+                            <div class="col-lg-7" style="margin-left: 5px;">
+                                <h4>Welcome to the catalog!</h4>
+                                <!--Crumbs -->
                             </div>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Catalog</li>
+                                </ol>
+                            </nav>
+                            {{-- End crumbs --}}
                             <hr>
                             <div class="row">
                                 @foreach ($products as $pro)

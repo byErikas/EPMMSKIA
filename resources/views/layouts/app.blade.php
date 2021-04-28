@@ -26,21 +26,25 @@
     <div class="bg-gray-100">
         @include('layouts.navigation')
 
-        <!-- Page Heading -->
-        <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                {{ $header }}
+        <div style="display: flex; min-height: 100vh; flex-direction: column;">
+            <!-- Page Heading -->
+            <header class="bg-white shadow">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    {{ $header }}
+                </div>
+            </header>
+
+            <div style="flex: 1;">
+                <!-- Page Content -->
+                <main>
+                    {{ $slot }}
+                </main>
             </div>
-        </header>
+        </div>
 
-        <!-- Page Content -->
-        <main>
-            {{ $slot }}
-        </main>
-
-        <footer>
+        <footer style="text-align: center; background: #404040; color: #999;">
             <div>
-                Erikas Byštautas KT-2
+                Erikas Byštautas, KT-8/2
             </div>
         </footer>
     </div>
