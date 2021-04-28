@@ -20,26 +20,30 @@ class ProductController extends Controller
 
     public function returnItem($slug)
     {
+        //FIND ITEM GIVEN
         $item = Product::where('slug', '=', $slug)->first();
         if ($item == null) {
             return redirect('dashboard');
         }
 
+        //ITEM RATING AND CATEGORY
         $rating = $item->averageRating;
         $category = $item->categories->first()->name;
 
-        //ITEM TO ITEM FILTERING
+        //CONTENT BASED FILTER - BASED TO ITEM ID
         $python_exe = \config('var.python');
-        $script = \config('var.item_to_item');
+        $script = \config('var.content_based');
         $output = shell_exec("$python_exe $script $item->id 5");
-        $your_array = explode("\n", $output);
+        $output_array = explode("\n", $output);
         $similar = collect([]);
-        foreach ($your_array as $suggestion) {
+        foreach ($output_array as $suggestion) {
             if ($suggestion != null) {
                 $similar->add(Product::find($suggestion));
             }
         }
+        //END CONTENT BASED FILTER
 
+        //RETURNS
         return view('item')->with([
             'item' => $item,
             'category' => $category,

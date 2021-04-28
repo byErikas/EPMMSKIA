@@ -1,8 +1,18 @@
+import mysql.connector as connection
 import pandas as pd
 import sys
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
-ds = pd.read_csv('products.csv')
+
+try:
+    mydb = connection.connect(
+        host="filmtestdata.northeurope.cloudapp.azure.com", database='laravel8-shop', user="pard", passwd="Erikutiss19", use_pure=True)
+    query = "Select * from products;"
+    ds = pd.read_sql(query, mydb)
+    mydb.close()  # close the connection
+except Exception as e:
+    mydb.close()
+    print(str(e))
 
 tf = TfidfVectorizer(analyzer='word', ngram_range=(1, 3),
                      min_df=0, stop_words='english')
