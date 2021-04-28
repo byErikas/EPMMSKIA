@@ -37,6 +37,12 @@
         <main>
             {{ $slot }}
         </main>
+
+        <footer>
+            <div>
+                Erikas Byštautas KT-2
+            </div>
+        </footer>
     </div>
 </body>
 

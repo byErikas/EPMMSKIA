@@ -1,22 +1,24 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Items') }}
+            {{ __('Categories') }}
         </h2>
     </x-slot>
-    <<div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+    <x-slot name="slot">
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6 bg-white border-b border-gray-200">
 
-                    <div class="container col-lg-12" style="margin-top: 40px">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Categories</li>
-                            </ol>
-                        </nav>
-                        <div class="row justify-content-center">
+                        <div class="container col-lg-12" style="margin-top: 40px">
+
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Categories</li>
+                                </ol>
+                            </nav>
+
                             <div class="col-lg-12">
                                 <hr>
                                 <div class="row">
@@ -38,5 +40,5 @@
                 </div>
             </div>
         </div>
-
+    </x-slot>
 </x-app-layout>

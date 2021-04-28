@@ -26,14 +26,16 @@ class ProductController extends Controller
             return redirect('dashboard');
         }
 
-        //ITEM RATING AND CATEGORY
+        //ITEM RATING AND CATEGORY ITEMS
         $rating = $item->averageRating;
         $category = $item->categories->first()->name;
+        $cat_model = Category::where('name', '=', $category)->first();
+        $cat_items = $cat_model->products->take(4);
 
         //CONTENT BASED FILTER - BASED TO ITEM ID
         $python_exe = \config('var.python');
         $script = \config('var.content_based');
-        $output = shell_exec("$python_exe $script $item->id 5");
+        $output = shell_exec("$python_exe $script $item->id 4");
         $output_array = explode("\n", $output);
         $similar = collect([]);
         foreach ($output_array as $suggestion) {
@@ -48,7 +50,8 @@ class ProductController extends Controller
             'item' => $item,
             'category' => $category,
             'ratings' => $rating,
-            'similar' => $similar
+            'similar' => $similar,
+            'cat_items' => $cat_items,
         ]);
     }
 
