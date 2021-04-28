@@ -8,6 +8,17 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                @if (count($orders) == 0)
+                    <div class="py-12">
+                        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                                <div class="p-6 bg-white border-b border-gray-200">
+                                    You have no orders.
+                                </div>
+                            </div>
+                        </div>
+
+                @endif
                 @foreach ($orders as $order)
                     <div class="p-6 bg-white border-b border-gray-200">
                         <p>Order placed date: {{ $order->created_at }}</p>
@@ -20,5 +31,6 @@
                 @endforeach
             </div>
         </div>
+    </div>
     </div>
 </x-app-layout>

@@ -10,6 +10,36 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+    public function profileIndex()
+    {
+        $user = Auth::user();
+        return view('profile', compact('user'));
+    }
+
+    public function profileUpdate(Request $request)
+    {
+        $user = Auth::user();
+
+        $this->validate($request, [
+            'name' => 'required|max:255|unique:users,name,' . $user->id,
+            'email' => 'required|email|max:255|unique:users,email,' . $user->id,
+        ]);
+
+        $input = $request->only('name', 'email', 'address', 'city', 'state', 'zip_code');
+
+        $user->update($input);
+
+        return back();
+    }
+
+    public function orders()
+    {
+        $user = Auth::user();
+        $orders = $user->orders;
+
+        return view('order')->with(['orders' => $orders]);
+    }
+
     public function purchase(Request $request)
     {
         if (!Auth::check()) {

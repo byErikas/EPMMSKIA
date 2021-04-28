@@ -18,7 +18,7 @@ use App\Http\Controllers\CategoryController;
 //Only authenticated users
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('orders', 'App\Http\Controllers\ProfileController@orders')->name('user.orders');
+    Route::get('orders', 'App\Http\Controllers\UserController@orders')->name('user.orders');
     //Password change page
     Route::get('change-password', 'App\Http\Controllers\ChangePasswordController@index')->name('index.password');
     Route::post('change-password', 'App\Http\Controllers\ChangePasswordController@store')->name('change.password');
@@ -27,8 +27,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/items/{name}', 'App\Http\Controllers\ProductController@rateItem')->name('single.item.rate');
 
     //Profile page routes
-    Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->name('profile.show');
-    Route::patch('/profile', 'App\Http\Controllers\ProfileController@update')->name('profile.update');
+    Route::get('/profile', 'App\Http\Controllers\UserController@profileIndex')->name('profile.show');
+    Route::patch('/profile', 'App\Http\Controllers\UserController@profileUpdate')->name('profile.update');
     Route::get('/forgot-password', function () {
         return view('auth.forgot-password');
     });
