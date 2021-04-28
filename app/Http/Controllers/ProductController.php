@@ -13,11 +13,8 @@ class ProductController extends Controller
 {
     public function rateItem(Request $request)
     {
-        //rate item from given request
-        //$user = Auth()->user();
         $item = Product::find($request->get('id'));
         $item->rateOnce($request->get('rating'));
-        //dd($item->ratings);
         return redirect()->back();
     }
 
@@ -54,7 +51,7 @@ class ProductController extends Controller
     //CRUD FUNCTIONS
     public function index()
     {
-        $products = Product::all();
+        $products = Product::paginate(10);
         return view('products\index', compact('products'));
     }
 

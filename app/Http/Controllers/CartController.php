@@ -10,9 +10,7 @@ class CartController extends Controller
 {
     public function shop()
     {
-        //\Cart::session($userId);
-        $products = Product::all();
-        //dd($products);
+        $products = Product::paginate(12);
         return view('dashboard')->with(['products' => $products]);
     }
 

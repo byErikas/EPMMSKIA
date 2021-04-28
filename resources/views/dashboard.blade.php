@@ -8,26 +8,26 @@
 
     <x-slot name="slot">
         <div class="container col-lg-12" style="margin-top: 40px">
-        <!--Session alerts  -->
-        @if (session()->has('success_msg'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session()->get('success_msg') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-        @endif
-        @if (session()->has('alert_msg'))
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                {{ session()->get('alert_msg') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-        @endif
-        <!--End session alerts  -->
+            <!--Session alerts  -->
+            @if (session()->has('success_msg'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session()->get('success_msg') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+            @endif
+            @if (session()->has('alert_msg'))
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{ session()->get('alert_msg') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+            @endif
+            <!--End session alerts  -->
 
-        <!--Crumbs -->
+            <!--Crumbs -->
 
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -78,6 +78,10 @@
                             </div>
                         @endforeach
                     </div>
+                </div>
+                {{-- Pagination --}}
+                <div class="d-flex justify-content-center">
+                    {!! $products->links() !!}
                 </div>
             </div>
         </div>

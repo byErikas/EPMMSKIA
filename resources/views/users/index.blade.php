@@ -78,9 +78,11 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <div>
-                                </div>
                             </div>
+                        </div>
+                        {{-- Pagination --}}
+                        <div class="d-flex justify-content-center">
+                            {!! $users->links() !!}
                         </div>
                     </div>
                 </div>
