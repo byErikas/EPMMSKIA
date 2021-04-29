@@ -19,12 +19,27 @@
                         <div class="p-6 bg-white border-b border-gray-200">
                             <p>Order placed date: {{ $order->created_at }}</p>
                             <p>Transaction ID: {{ $order->transaction_id }}</p>
-                            <p>Items ordered: |@foreach (json_decode($order->products) as $item)
-                                    {{ $item->pivot->quantity }} <a
-                                        href="/items/{{ $item->slug }}">{{ $item->name }}</a>
-                                    |
-                                @endforeach</p>
-                            <p>Total cost: {{ $order->total }}€</p>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <td>Quantity</td>
+                                        <td>Name</td>
+                                        <td>Description</td>
+                                        <td>Price</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (json_decode($order->products) as $item)
+                                        <tr>
+                                            <td>{{ $item->pivot->quantity }}</td>
+                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->description }}</td>
+                                            <td>{{ $item->price }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            <div style="text-align: right;">Total cost: {{ $order->total }}€</div>
                         </div>
                     @endforeach
                 </div>
