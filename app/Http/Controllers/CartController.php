@@ -14,13 +14,18 @@ class CartController extends Controller
         //PRODUCT PAGINATION
         $products = Product::paginate(12);
 
-        //PULL MOST PURCHASED ITEMS - END OF $SQL INDICATED COUNT (8)
-        $sql = 'select product_id, count(quantity) as c from order_product group by product_id order by c desc limit 8';
+        //PULL MOST PURCHASED ITEMS
+        $sql = 'SELECT product_id, SUM(quantity) AS TotalQuantity FROM order_product GROUP BY product_id ORDER BY SUM(quantity) DESC';
         $results = DB::select(DB::raw($sql));
         $top = collect([]);
-
+        $i = 0;
         //FROM ARRAY ID'S TO MODEL COLLECTION
         foreach ($results as $item) {
+            $i++;
+            if($i == 9)
+            {
+                break;
+            }
             $model = Product::find($item->product_id);
             $top->push($model);
         }
