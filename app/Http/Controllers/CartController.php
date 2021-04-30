@@ -22,8 +22,7 @@ class CartController extends Controller
         //FROM ARRAY ID'S TO MODEL COLLECTION
         foreach ($results as $item) {
             $i++;
-            if($i == 9)
-            {
+            if ($i == 9) {
                 break;
             }
             $model = Product::find($item->product_id);
@@ -40,7 +39,15 @@ class CartController extends Controller
     public function cart()
     {
         $cartCollection = \Cart::getContent();
-        return view('checkout')->with(['cartCollection' => $cartCollection]);;
+        if (Auth::check()) {
+            $user = Auth::user();
+        } else {
+            $user = null;
+        }
+        return view('checkout')->with([
+            'cartCollection' => $cartCollection,
+            'user' => $user
+        ]);
     }
 
     public function add(Request $request)

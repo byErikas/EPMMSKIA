@@ -10,21 +10,7 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-
-
-                    <div class="p-6 bg-white border-b border-gray-200">
-                        <div class="product-description">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                    <li class="breadcrumb-item"><a
-                                            href="/categories/{{ $category }}">{{ $category }}</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">{{ $item->name }}</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-
+                    {{-- SESSION ALERTS --}}
                     @if (session()->has('success_msg'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             {{ session()->get('success_msg') }}
@@ -41,16 +27,21 @@
                             </button>
                         </div>
                     @endif
-                    @if (count($errors) > 0)
-                        @foreach ($errors0 > all() as $error)
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                {{ $error }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                        @endforeach
-                    @endif
+                    {{-- END SESSION ALERTS --}}
+
+                    <div class="p-6 bg-white border-b border-gray-200">
+                        <div class="product-description">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                    <li class="breadcrumb-item"><a
+                                            href="/categories/{{ $category }}">{{ $category }}</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">{{ $item->name }}</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+
                     <div class="p-6 bg-white border-b border-gray-200" style="padding-bottom: 230px;">
                         <div class="itcontainer col-lg-12">
 

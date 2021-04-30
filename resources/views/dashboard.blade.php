@@ -10,7 +10,7 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <!--Session alerts  -->
+                    {{-- SESSION ALERTS --}}
                     @if (session()->has('success_msg'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             {{ session()->get('success_msg') }}
@@ -27,7 +27,7 @@
                             </button>
                         </div>
                     @endif
-                    <!--End session alerts  -->
+                    {{-- END SESSION ALERTS --}}
 
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="product-description">
@@ -46,6 +46,9 @@
                         </div>
                     </div>
                     {{-- POPULAR ITEMS START --}}
+                    {{-- IF THERE ARE TOP ITEMS CHECK --}}
+                    @if (count($top) != 0)
+                    {{-- END IF THERE ARE TOP ITEMS CHECK --}}
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="product-description">
                             <span>
@@ -91,6 +94,7 @@
                             @endforeach
                         </div>
                     </div>
+                    @endif
                     {{-- POPULAR ITEMS END --}}
                     {{-- ALL ITEMS START --}}
                     <div class="p-6 bg-white border-b border-gray-200">
