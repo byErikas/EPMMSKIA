@@ -34,9 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     //Recommendations page routes
-    Route::get('/recommendations', function () {
-        return view('recommendations');
-    })->name('recommendations');
+    Route::get('/recommendations', 'App\Http\Controllers\ProductController@userRecommendations')->name('recommendations');
 
     //Admin routes
     Route::group(['middleware' => 'admin'], function () {

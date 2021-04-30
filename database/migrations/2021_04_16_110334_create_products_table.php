@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->text('description')->nullable();
-            $table->integer('price')->default(0);
+            $table->float('price')->default(0);
             $table->string('img_path')->nullable()->default('https://dummyimage.com/600x600/828282/ffffff');
             $table->timestamps();
         });

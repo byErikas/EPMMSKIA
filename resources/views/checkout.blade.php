@@ -45,56 +45,64 @@
                         {{-- CART ITEMS SECTION --}}
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
-                                <br>
                                 @if (\Cart::getTotalQuantity() > 0)
-                                    <h4>{{ \Cart::getTotalQuantity() }} Product(s) In Your cart</h4><br>
+                                    <hr>
+                                    <h3>{{ \Cart::getTotalQuantity() }} Product(s) In Your cart</h3>
+                                    <hr>
                                 @else
                                     <h4>No Product(s) In Your Cart</h4><br>
                                     <a href="/" class="btn btn-dark">Continue Shopping</a>
                                 @endif
 
-                                @foreach ($cartCollection as $item)
-                                    <div class="row">
-                                        <div class="col-lg-3">
+                                <div
+                                    style="max-height: 55.4vh; overflow-y: auto; overflow-x: hidden; margin-bottom: 15px;">
+                                    @foreach ($cartCollection as $item)
+                                        <div class="row">
+                                            <div class="col-lg-3">
 
-                                            <img src="{{ $item->attributes->image }}" class="img-thumbnail"
-                                                width="200" height="200">
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <p>
-                                                <b> <a href="/shop/{{ $item->attributes->slug }}">{{ $item->name }}
-                                                    </a></b><br>
-                                                <b>Price: </b>${{ $item->price }}<br>
-                                                <b>Sub Total: </b>${{ \Cart::get($item->id)->getPriceSum() }}<br>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-4"
-                                            style="display: flex; justify-content: flex-end; align-items: flex-start;">
-                                            <div class="row">
-                                                <form action="{{ route('cart.update') }}" method="POST">
-                                                    {{ csrf_field() }}
-                                                    <div style="display: flex; flex-wrap: nowrap; margin-top: 10px;">
+                                                <img src="{{ $item->attributes->image }}" class="img-thumbnail"
+                                                    width="200" height="200">
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <p>
+                                                    <b> <a href="/shop/{{ $item->attributes->slug }}">{{ $item->name }}
+                                                        </a></b><br>
+                                                    <b>Price: </b>${{ $item->price }}<br>
+                                                    <b>Sub Total: </b>${{ \Cart::get($item->id)->getPriceSum() }}<br>
+                                                </p>
+                                            </div>
+                                            <div class="col-lg-4"
+                                                style="display: flex; justify-content: flex-end; align-items: flex-start;">
+                                                <div class="row">
+                                                    <form action="{{ route('cart.update') }}" method="POST">
+                                                        {{ csrf_field() }}
+                                                        <div
+                                                            style="display: flex; flex-wrap: nowrap; margin-top: 10px;">
+                                                            <input type="hidden" value="{{ $item->id }}" id="id"
+                                                                name="id">
+                                                            <input type="number" class="form-control form-control-sm"
+                                                                value="{{ $item->quantity }}" id="quantity"
+                                                                name="quantity"
+                                                                style="width: 50px; margin-right: 10px;">
+                                                            <button class="btn btn-secondary btn-sm"
+                                                                style="margin-right: 10px;"><i
+                                                                    class="bi bi-arrow-clockwise"></i></button>
+                                                    </form>
+                                                    <form action="{{ route('cart.remove') }}" method="POST">
+                                                        {{ csrf_field() }}
                                                         <input type="hidden" value="{{ $item->id }}" id="id"
                                                             name="id">
-                                                        <input type="number" class="form-control form-control-sm"
-                                                            value="{{ $item->quantity }}" id="quantity"
-                                                            name="quantity" style="width: 50px; margin-right: 10px;">
-                                                        <button class="btn btn-secondary btn-sm"
+                                                        <button class="btn btn-dark btn-sm"
                                                             style="margin-right: 10px;"><i
-                                                                class="bi bi-arrow-clockwise"></i></button>
-                                                </form>
-                                                <form action="{{ route('cart.remove') }}" method="POST">
-                                                    {{ csrf_field() }}
-                                                    <input type="hidden" value="{{ $item->id }}" id="id" name="id">
-                                                    <button class="btn btn-dark btn-sm" style="margin-right: 10px;"><i
-                                                            class="bi bi-trash"></i></button>
-                                                </form>
+                                                                class="bi bi-trash"></i></button>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                </div>
+                                <hr>
+                                @endforeach
                             </div>
-                            <hr>
-                            @endforeach
                             @if (count($cartCollection) > 0)
                                 <div style="display: flex;">
                                     <form action="{{ route('cart.clear') }}" method="POST">

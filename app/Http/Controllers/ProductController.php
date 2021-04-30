@@ -8,6 +8,7 @@ use App\Models\Product;
 use Illuminate\Support\Str;
 use Config;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -16,6 +17,26 @@ class ProductController extends Controller
         $item = Product::find($request->get('id'));
         $item->rateOnce($request->get('rating'));
         return redirect()->back();
+    }
+
+    public function userRecommendations()
+    {
+        $user = Auth::user();
+        $python_exe = \config('var.python');
+        $script = \config('var.nearest_neighbour');
+        $output = shell_exec("$python_exe $script $user->id 8");
+        $output_array = explode("\n", $output);
+
+        $items = collect([]);
+        foreach ($output_array as $item)
+            if (is_numeric($item)) {
+                $items->add(Product::find($item));
+            }
+
+        //RETURNS
+        return view('recommendations')->with([
+            'rating_based' => $items,
+        ]);
     }
 
     public function returnItem($slug)
