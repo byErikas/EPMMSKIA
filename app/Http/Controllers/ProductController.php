@@ -51,7 +51,19 @@ class ProductController extends Controller
         $rating = $item->averageRating;
         $category = $item->categories->first()->name;
         $cat_model = Category::where('name', '=', $category)->first();
-        $cat_items = $cat_model->products->take(4);
+        $cat_items = $cat_model->products->take(5);
+        $i = 0;
+        $dupe = false;
+        foreach ($cat_items as $prods) {
+            if ($prods->slug == $slug) {
+                unset($cat_items[$i]);
+                $dupe = true;
+            }
+            $i++;
+        }
+        if ($dupe == false) {
+            unset($cat_items[count($cat_items) - 1]);
+        }
 
         //CONTENT BASED FILTER - BASED TO ITEM ID
         $python_exe = \config('var.python');
