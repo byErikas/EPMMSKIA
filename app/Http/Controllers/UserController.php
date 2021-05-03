@@ -46,7 +46,7 @@ class UserController extends Controller
             $request->validate([
                 'name' => 'required',
                 'email' => 'required|unique:users',
-                'address' => 'required|numeric',
+                'address' => 'required',
                 'city' => 'required',
                 'state' => 'required',
                 'zip_code' => 'required'
@@ -67,6 +67,14 @@ class UserController extends Controller
             );
             Auth::login($user);
         } else {
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'address' => 'required',
+                'city' => 'required',
+                'state' => 'required',
+                'zip_code' => 'required'
+            ]);
             $user = Auth()->user();
         }
         $transaction_id = Str::random(12);
@@ -82,7 +90,7 @@ class UserController extends Controller
         }
 
         \Cart::clear();
-        return redirect('dashboard')->with('success_msg', 'Order placed!');
+        return redirect('dashboard')->with('success_msg', 'Užsakymas pateiktas!');
     }
 
 
@@ -135,7 +143,7 @@ class UserController extends Controller
             'zip_code' => $request->get('zip_code')
         ]);
         $user->save();
-        return redirect('/user')->with('success', 'User created!');
+        return redirect('/user')->with('success', 'Vartotojas sukurtas!');
     }
 
     /**
@@ -181,7 +189,7 @@ class UserController extends Controller
         $user->slug = Str::slug($request->get('name'));
         $user->save();
 
-        return redirect('/user')->with('success', 'User updated!');
+        return redirect('/user')->with('success', 'Vartotojas atnaujintas!');
     }
 
     /**
@@ -195,6 +203,6 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        return redirect('/user')->with('success', 'User deleted!');
+        return redirect('/user')->with('success', 'Vartotojas pašalintas!');
     }
 }

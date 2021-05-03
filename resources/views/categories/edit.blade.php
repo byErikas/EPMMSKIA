@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Admin Dashboard') }}
+            {{ __('Administratoriaus meniu') }}
         </h2>
     </x-slot>
 
@@ -12,7 +12,7 @@
 
                     <div class="row">
                         <div class="col-sm-8 offset-sm-2">
-                            <h1 class="display-3">Update a category</h1>
+                            <h1 class="display-3">Redaguoti kategoriją</h1>
 
                             @if ($errors->any())
                                 <div class="alert alert-danger">
@@ -29,10 +29,10 @@
                                 @method('PATCH')
                                 @csrf
                                 <div class="form-group">
-                                    <label for="name"> Name:</label>
+                                    <label for="name"> Pavadinimas:</label>
                                     <input type="text" class="form-control" name="name" value={{ $category->name }} />
                                 </div>
-                                <button type="submit" class="btn btn-primary">Update</button>
+                                <button type="submit" class="btn btn-primary">Išsaugoti</button>
                             </form>
 
                         </div>

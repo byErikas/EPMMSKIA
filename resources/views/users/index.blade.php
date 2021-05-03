@@ -1,16 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Admin Dashboard') }}
+            {{ __('Administratoriaus meniu') }}
         </h2>
     </x-slot>
 
     <div class="container col-lg-12" style="margin-top: 40px">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item"><a href="/admin">Admin</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Users</li>
+                <li class="breadcrumb-item"><a href="/">Namai</a></li>
+                <li class="breadcrumb-item"><a href="/admin">Administracija</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Vartotojai</li>
             </ol>
         </nav>
 
@@ -28,22 +28,22 @@
 
                         <div class="row">
                             <div class="col-sm-12">
-                                <h1 class="display-3">Users</h1>
-                                <a style="margin: 19px;" href="{{ route('user.create') }}" class="btn btn-primary">New
-                                    user</a>
+                                <h1 class="display-3">Vartotojai</h1>
+                                <a style="margin: 19px;" href="{{ route('user.create') }}"
+                                    class="btn btn-primary">Naujas vartotojas</a>
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <td>ID</td>
-                                            <td>Name</td>
-                                            <td>Is admin</td>
-                                            <td>E-mail</td>
-                                            <td>Address</td>
-                                            <td>City</td>
-                                            <td>State</td>
-                                            <td>Zip code</td>
-                                            <td>Orders</td>
-                                            <td colspan=2>Actions</td>
+                                            <td>ID:</td>
+                                            <td>Vardas:</td>
+                                            <td>Rolė:</td>
+                                            <td>El. paštas:</td>
+                                            <td>Adresas:</td>
+                                            <td>Miestas:</td>
+                                            <td>Rajonas:</td>
+                                            <td>Pašto kodas:</td>
+                                            <td>Užsakymai:</td>
+                                            <td colspan=2>Veiksmai:</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -59,19 +59,19 @@
                                                 <td>{{ $user->zip_code }}</td>
                                                 <td>
                                                     @foreach (json_decode($user->orders) as $order)
-                                                        Transaction ID: {{ $order->transaction_id }} <br>
+                                                        Užsakymo ID: {{ $order->transaction_id }} <br>
                                                     @endforeach
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('user.edit', $user->id) }}"
-                                                        class="btn btn-primary">Edit</a>
+                                                        class="btn btn-primary">Redaguoti</a>
                                                 </td>
                                                 <td>
                                                     <form action="{{ route('user.destroy', $user->id) }}"
                                                         method="post">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button class="btn btn-danger" type="submit">Delete</button>
+                                                        <button class="btn btn-danger" type="submit">Pašalinti</button>
                                                     </form>
                                                 </td>
                                             </tr>

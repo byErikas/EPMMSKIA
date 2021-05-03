@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Items') }}
+            {{ __('Produktai') }}
         </h2>
     </x-slot>
 
@@ -32,7 +32,7 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="product-description">
                             <span>
-                                <h2>Catalog:</h2>
+                                <h2>Katalogas:</h2>
                             </span>
 
                         </div>
@@ -44,7 +44,7 @@
                         <div class="p-6 bg-white border-b border-gray-200">
                             <div class="product-description">
                                 <span>
-                                    <h5>Popular items:</h5>
+                                    <h5>Populiarūs produktai:</h5>
                                 </span>
                             </div>
                             <div class="row">
@@ -76,7 +76,7 @@
                                                         <div class="row">
                                                             <button class="btn btn-secondary btn-sm"
                                                                 class="tooltip-test" title="add to cart" type="submit">
-                                                                <i class="fa fa-shopping-cart"></i> Add to cart
+                                                                <i class="fa fa-shopping-cart"></i> Į krepšelį
                                                             </button>
                                                         </div>
                                                     </div>
@@ -93,7 +93,7 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="product-description">
                             <span>
-                                <h5>All items:</h5>
+                                <h5>Visi produktai:</h5>
                             </span>
                         </div>
                         <div class="row">
@@ -124,7 +124,7 @@
                                                     <div class="row">
                                                         <button class="btn btn-secondary btn-sm" class="tooltip-test"
                                                             title="add to cart" type="submit">
-                                                            <i class="fa fa-shopping-cart"></i> Add to cart
+                                                            <i class="fa fa-shopping-cart"></i>Į krepšelį
                                                         </button>
                                                     </div>
                                                 </div>

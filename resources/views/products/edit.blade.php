@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Admin Dashboard') }}
+            {{ __('Administratoriaus meniu') }}
         </h2>
     </x-slot>
 
@@ -12,7 +12,7 @@
 
                     <div class="row">
                         <div class="col-sm-8 offset-sm-2">
-                            <h1 class="display-3">Update a product</h1>
+                            <h1 class="display-3">Atnaujinti produktą</h1>
 
                             @if ($errors->any())
                                 <div class="alert alert-danger">
@@ -28,12 +28,12 @@
                                 @method('PATCH')
                                 @csrf
                                 <div class="form-group">
-                                    <label for="name"> Name:</label>
+                                    <label for="name"> Pavadinimas:</label>
                                     <input type="text" class="form-control" name="name" value={{ $product->name }} />
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="category">Category:</label>
+                                    <label for="category">Kategorija:</label>
                                     <select name="category" class="form-control">
                                         @foreach($categories as $category)
                                         <option value={{$category->id}}>{{$category->name}}</option>
@@ -42,22 +42,22 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="description">Description:</label>
+                                    <label for="description">Aprašymas:</label>
                                     <input type="text" class="form-control" name="description"
                                         value={{ $product->description }} />
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="price">Price:</label>
+                                    <label for="price">Kaina:</label>
                                     <input type="text" class="form-control" name="price"
                                         value={{ $product->price }} />
                                 </div>
                                 <div class="form-group">
-                                    <label for="img_path">Image path:</label>
+                                    <label for="img_path">Paveikslėlio nuoroda:</label>
                                     <input type="text" class="form-control" name="img_path"
                                         value={{ $product->img_path }} />
                                 </div>
-                                <button type="submit" class="btn btn-primary">Update</button>
+                                <button type="submit" class="btn btn-primary">Atnaujinti</button>
                             </form>
                         </div>
                     </div>

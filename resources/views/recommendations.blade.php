@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('My Recommendations') }}
+            {{ __('Mano rekomendacijos') }}
         </h2>
     </x-slot>
 
@@ -20,7 +20,7 @@
                             <div class="p-6 bg-white border-b border-gray-200">
                                 <div class="product-description">
                                     <span>
-                                        <h5>Based on users with similar interests:</h5>
+                                        <h5>Remiantis vartotojais su panašiais interesais:</h5>
                                     </span>
                                 </div>
                                 <div class="row">
@@ -53,7 +53,7 @@
                                                                 <button class="btn btn-secondary btn-sm"
                                                                     class="tooltip-test" title="add to cart"
                                                                     type="submit">
-                                                                    <i class="fa fa-shopping-cart"></i> Add to cart
+                                                                    <i class="fa fa-shopping-cart"></i>Į krepšelį
                                                                 </button>
                                                             </div>
                                                         </div>
@@ -68,7 +68,7 @@
 
                         @if (count($rating_based) == 0)
                             <div class="p-6 bg-white border-b border-gray-200">
-                                Not enough items rated to form recommendation.
+                                Nepakankamai produktų įvertinta suformuoti rekomendacijas.
                             </div>
                         @endif
 

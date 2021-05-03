@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Categories') }}
+            {{ __('Kategorijos') }}
         </h2>
     </x-slot>
     <x-slot name="slot">
@@ -14,8 +14,8 @@
 
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Categories</li>
+                                    <li class="breadcrumb-item"><a href="/">Namai</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Kategorijos</li>
                                 </ol>
                             </nav>
 

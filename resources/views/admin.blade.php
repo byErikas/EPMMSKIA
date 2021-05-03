@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Admin Dashboard') }}
+            {{ __('Administratoriaus meniu') }}
         </h2>
     </x-slot>
 
@@ -40,13 +40,13 @@
                     {{-- End session alerts --}}
 
                     <div class="p-6 bg-white border-b border-gray-200">
-                        You're in the admin dashboard.
+                        Jūs esate Administratoriaus meniu.
                     </div>
                     <div class="col-lg-3">
                         <div class="card" style="margin-bottom: 20px; height: auto; margin-top: 20px;">
                             <div class="card-body">
                                 <a href="/product">
-                                    <h6 class="card-title">Product Management</h6>
+                                    <h6 class="card-title">Produktų valdymas</h6>
                                 </a>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                         <div class="card" style="margin-bottom: 20px; height: auto; margin-top: 20px;">
                             <div class="card-body">
                                 <a href="/category">
-                                    <h6 class="card-title">Category Management</h6>
+                                    <h6 class="card-title">Kategorijų valdymas</h6>
                                 </a>
                             </div>
                         </div>
@@ -66,7 +66,7 @@
                         <div class="card" style="margin-bottom: 20px; height: auto; margin-top: 20px;">
                             <div class="card-body">
                                 <a href="/user">
-                                    <h6 class="card-title">User Management</h6>
+                                    <h6 class="card-title">Vartotojų valdymas</h6>
                                 </a>
                             </div>
                         </div>

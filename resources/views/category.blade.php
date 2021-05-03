@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Items') }}
+            {{ __('Kategorijos') }}
         </h2>
     </x-slot>
 
@@ -15,7 +15,7 @@
 
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="/">Namai</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">{{ $category }}</li>
                                 </ol>
                             </nav>
@@ -24,7 +24,7 @@
                                 <div class="col-lg-12">
                                     <div class="row">
                                         <div class="col-lg-7">
-                                            <h4>{{ $category }} category products</h4>
+                                            <h4>{{ $category }} kategorijos produktai:</h4>
                                         </div>
                                     </div>
                                     <hr>
@@ -40,7 +40,7 @@
                                                         <a href="/items/{{ $pro->slug }}">
                                                             <h6 class="card-title">{{ $pro->name }}</h6>
                                                         </a>
-                                                        <p>${{ $pro->price }}</p>
+                                                        <p>{{ $pro->price }}€</p>
                                                         <form action="{{ route('cart.store') }}" method="POST">
                                                             {{ csrf_field() }}
                                                             <input type="hidden" value="{{ $pro->id }}" id="id"
@@ -61,7 +61,7 @@
                                                                     <button class="btn btn-secondary btn-sm"
                                                                         class="tooltip-test" title="add to cart"
                                                                         type="submit">
-                                                                        <i class="fa fa-shopping-cart"></i> Add to cart
+                                                                        <i class="fa fa-shopping-cart"></i> Į krepšelį
                                                                     </button>
                                                                 </div>
                                                             </div>

@@ -70,7 +70,7 @@ class CategoryController extends Controller
             'slug' => Str::slug($request->get('name')),
         ]);
         $category->save();
-        return redirect('/category')->with('success', 'Category created!');
+        return redirect('/category')->with('success', 'Kategorija sukurta!');
     }
 
     /**
@@ -114,7 +114,7 @@ class CategoryController extends Controller
         $category->slug = Str::slug($request->get('name'));
         $category->save();
 
-        return redirect('/category')->with('success', 'Category updated!');
+        return redirect('/category')->with('success', 'Kategorija atnaujinta!');
     }
 
     /**
@@ -128,6 +128,6 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->delete();
 
-        return redirect('/category')->with('success', 'Category deleted!');
+        return redirect('/category')->with('success', 'Kategorija pašalinta!');
     }
 }

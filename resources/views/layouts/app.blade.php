@@ -44,7 +44,7 @@
 
         <footer style="text-align: center; background: #404040; color: #999;">
             <div>
-                Erikas Byštautas, KT-8/2
+                © Erikas Byštautas, KT-8/2
             </div>
         </footer>
     </div>

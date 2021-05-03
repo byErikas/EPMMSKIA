@@ -6,8 +6,6 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Str;
-use Config;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
@@ -24,14 +22,15 @@ class ProductController extends Controller
         $user = Auth::user();
         $python_exe = \config('var.python');
         $script = \config('var.nearest_neighbour');
-        $output = shell_exec("$python_exe $script $user->id 8");
+        $output = shell_exec("$python_exe $script $user->id 4");
         $output_array = explode("\n", $output);
 
         $items = collect([]);
         foreach ($output_array as $item)
-            if (is_numeric($item)) {
+            if (is_numeric($item) && !empty($item) && !$item == null) {
                 $items->add(Product::find($item));
             }
+        // dd($items);
 
         //RETURNS
         return view('recommendations')->with([
@@ -121,7 +120,7 @@ class ProductController extends Controller
         $product->categories->first()->pivot->save();
         $product->save();
 
-        return redirect('/product')->with('success', 'Product updated!');
+        return redirect('/product')->with('success', 'Produktas atnaujintas!');
     }
 
     public function store(Request $request)
@@ -141,7 +140,7 @@ class ProductController extends Controller
             'img_path' => $request->get('img_path'),
         ]);
         $product->save();
-        return redirect('/product')->with('success', 'Product created!');
+        return redirect('/product')->with('success', 'Produktas sukurtas!');
     }
 
     public function create()
@@ -154,6 +153,6 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->delete();
 
-        return redirect('/product')->with('success', 'Product deleted!');
+        return redirect('/product')->with('success', 'Produktas pašalintas!');
     }
 }

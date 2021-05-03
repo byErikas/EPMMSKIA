@@ -62,19 +62,19 @@ class CartController extends Controller
                 'slug' => $request->slug
             )
         ));
-        return redirect()->back()->with('success_msg', 'Item added to cart!');
+        return redirect()->back()->with('success_msg', 'Produktas pridėtas į krepšelį!');
     }
 
     public function clear()
     {
         \Cart::clear();
-        return redirect()->route('cart.index')->with('success_msg', 'Cart cleared!');
+        return redirect()->route('cart.index')->with('success_msg', 'Krepšelis išvalytas!');
     }
 
     public function remove(Request $request)
     {
         \Cart::remove($request->id);
-        return redirect()->route('cart.index')->with('success_msg', 'Item removed!');
+        return redirect()->route('cart.index')->with('success_msg', 'Produktas pašalintas!');
     }
 
     public function update(Request $request)
@@ -88,6 +88,6 @@ class CartController extends Controller
                 ),
             )
         );
-        return redirect()->route('cart.index')->with('success_msg', 'Cart updated!');
+        return redirect()->route('cart.index')->with('success_msg', 'Krepšelis atnaujintas!');
     }
 }

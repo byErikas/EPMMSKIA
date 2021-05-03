@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('My Orders') }}
+            {{ __('Mano užsakymai') }}
         </h2>
     </x-slot>
 
@@ -11,21 +11,21 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     @if (count($orders) == 0)
                         <div class="p-6 bg-white border-b border-gray-200">
-                            You have no orders.
+                            Neturite užsakymų.
                         </div>
                     @endif
 
                     @foreach ($orders as $order)
                         <div class="p-6 bg-white border-b border-gray-200">
-                            <p>Order placed date: {{ $order->created_at }}</p>
-                            <p>Transaction ID: {{ $order->transaction_id }}</p>
+                            <p>Užsakymo data: {{ $order->created_at }}</p>
+                            <p>Užsakymo ID: {{ $order->transaction_id }}</p>
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <td>Quantity</td>
-                                        <td>Name</td>
-                                        <td>Description</td>
-                                        <td>Price</td>
+                                        <td>Kiekis:</td>
+                                        <td>Pavadinimas:</td>
+                                        <td>Aprašymas:</td>
+                                        <td>Kaina:</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -39,7 +39,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            <div style="text-align: right;">Total cost: {{ $order->total }}€</div>
+                            <div style="text-align: right;">Iš viso: {{ $order->total }}€</div>
                         </div>
                     @endforeach
                 </div>

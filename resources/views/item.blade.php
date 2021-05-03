@@ -33,7 +33,7 @@
                         <div class="product-description">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="/">Namai</a></li>
                                     <li class="breadcrumb-item"><a
                                             href="/categories/{{ $category }}">{{ $category }}</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">{{ $item->name }}</li>
@@ -58,7 +58,7 @@
                                     <span>{{ $category }}</span>
                                     <h1>{{ $item->name }}</h1>
                                     <div style="display: flex; align-items: flex-end;">
-                                        <h4>Rating: {{ number_format((float) $ratings, 1, '.', '') }}</h4>
+                                        <h4>Įvertinimas: {{ number_format((float) $ratings, 1, '.', '') }}</h4>
                                         @if (Auth::check())
                                             <form action="{{ route('single.item.rate', $item->id) }}" method="POST">
                                                 {{ csrf_field() }}
@@ -74,7 +74,7 @@
                                                     </select>
                                                     <button class="btn btn-block btn-success" type="submit"
                                                         style="margin-left: 15px;">
-                                                        Rate
+                                                        Įvertinti
                                                     </button>
                                                 </div>
                                             </form>
@@ -99,7 +99,7 @@
                                         <input type="hidden" value="1" id="quantity" name="quantity">
 
                                         <button class="btn btn-block btn-success" type="submit">
-                                            Add to cart
+                                            Į krepšelį
                                         </button>
                                 </div>
                             </div>
@@ -112,7 +112,7 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="product-description">
                             <hr>
-                            <span>Similar to <h5>{{ $item->name }}:</h5></span>
+                            <span>Produktai panašūs į <h5>{{ $item->name }}:</h5></span>
                         </div>
                         <div class="row">
                             @foreach ($similar as $cat_item)
@@ -142,7 +142,7 @@
                                                     <div class="row">
                                                         <button class="btn btn-secondary btn-sm" class="tooltip-test"
                                                             title="add to cart" type="submit">
-                                                            <i class="fa fa-shopping-cart"></i> Add to cart
+                                                            <i class="fa fa-shopping-cart"></i>Į krepšelį
                                                         </button>
                                                     </div>
                                                 </div>
@@ -155,7 +155,7 @@
                     </div>
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="product-description">
-                            <span>More products from <h5>{{ $category }}:</h5></span>
+                            <span>Daugiau iš <h5>{{ $category }}:</h5></span>
                         </div>
                         <div class="row">
                             @foreach ($cat_items as $cat_item)
@@ -185,7 +185,7 @@
                                                     <div class="row">
                                                         <button class="btn btn-secondary btn-sm" class="tooltip-test"
                                                             title="add to cart" type="submit">
-                                                            <i class="fa fa-shopping-cart"></i> Add to cart
+                                                            <i class="fa fa-shopping-cart"></i>Į krepšelį
                                                         </button>
                                                     </div>
                                                 </div>
@@ -200,7 +200,6 @@
             </div>
         </div>
         </div>
-
         </div>
     </x-slot>
 </x-app-layout>

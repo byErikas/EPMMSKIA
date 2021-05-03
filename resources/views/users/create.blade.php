@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Admin Dashboard') }}
+            {{ __('Administratoriaus meniu') }}
         </h2>
     </x-slot>
 
@@ -12,7 +12,7 @@
 
                     <div class="row">
                         <div class="col-sm-8 offset-sm-2">
-                            <h1 class="display-3">Add a user</h1>
+                            <h1 class="display-3">Pridėti vartotoją</h1>
                             <div>
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
@@ -26,48 +26,48 @@
                                 <form method="post" action="{{ route('user.store') }}">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="name"> Name:</label>
+                                        <label for="name"> Vardas:</label>
                                         <input type="text" class="form-control" name="name" value="" />
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="is_admin">Role:</label>
+                                        <label for="is_admin">Rolė:</label>
                                         <select name="is_admin" class="form-control">
-                                            <option value='0'>User</option>
-                                            <option value='1'>Admin</option>
+                                            <option value='0'>Vartotojas</option>
+                                            <option value='1'>Administratorius</option>
                                         </select>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="email"> E-mail:</label>
+                                        <label for="email"> El. paštas:</label>
                                         <input type="text" class="form-control" name="email" value="" />
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="password"> Password:</label>
+                                        <label for="password"> Slaptažodis:</label>
                                         <input type="password" class="form-control" name="password" value="" />
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="address"> Address:</label>
+                                        <label for="address"> Adresas:</label>
                                         <input type="text" class="form-control" name="address" value="" />
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="city"> City:</label>
+                                        <label for="city"> Miestas:</label>
                                         <input type="text" class="form-control" name="city" value="" />
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="state"> State:</label>
+                                        <label for="state"> Rajonas:</label>
                                         <input type="text" class="form-control" name="state" value="" />
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="zip_code"> Zip Code:</label>
+                                        <label for="zip_code"> Pašto kodas:</label>
                                         <input type="text" class="form-control" name="zip_code" value="" />
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Create</button>
+                                    <button type="submit" class="btn btn-primary">Sukurti</button>
                                 </form>
                             </div>
                         </div>

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Checkout') }}
+            {{ __('Krepšelis') }}
         </h2>
     </x-slot>
 
@@ -35,8 +35,8 @@
                         <div class="product-description">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+                                    <li class="breadcrumb-item"><a href="/">Namai</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Krepšelis</li>
                                 </ol>
                             </nav>
                         </div>
@@ -47,11 +47,11 @@
                             <div class="col-lg-7">
                                 @if (\Cart::getTotalQuantity() > 0)
                                     <hr>
-                                    <h3>{{ \Cart::getTotalQuantity() }} Product(s) In Your cart</h3>
+                                    <h3>{{ \Cart::getTotalQuantity() }} Produktai(-ų) krepšelyje</h3>
                                     <hr>
                                 @else
-                                    <h4>No Product(s) In Your Cart</h4><br>
-                                    <a href="/" class="btn btn-dark">Continue Shopping</a>
+                                    <h4>Nėra produktų krepšelyje</h4><br>
+                                    <a href="/" class="btn btn-dark">Toliau apsipirkinėti</a>
                                 @endif
 
                                 <div
@@ -67,8 +67,8 @@
                                                 <p>
                                                     <b> <a href="/shop/{{ $item->attributes->slug }}">{{ $item->name }}
                                                         </a></b><br>
-                                                    <b>Price: </b>${{ $item->price }}<br>
-                                                    <b>Sub Total: </b>${{ \Cart::get($item->id)->getPriceSum() }}<br>
+                                                    <b>Kaina: </b>{{ $item->price }}€<br>
+                                                    <b>Iš viso: </b>${{ \Cart::get($item->id)->getPriceSum() }}<br>
                                                 </p>
                                             </div>
                                             <div class="col-lg-4"
@@ -107,14 +107,13 @@
                                 <div style="display: flex;">
                                     <form action="{{ route('cart.clear') }}" method="POST">
                                         {{ csrf_field() }}
-                                        <button class="btn btn-secondary btn-md">Clear Cart</button>
+                                        <button class="btn btn-secondary btn-md">Išvalyti krepšelį</button>
                                     </form>
                                     <br><a style="margin-left: 15px;" href="/dashboard"><button
-                                            class="btn btn-dark">Continue
-                                            Shopping</button></a>
+                                            class="btn btn-dark">Toliau apsipirkinėti</button></a>
                                     <div class="card" style="margin-left: auto;">
                                         <ul class="list-group list-group-flush">
-                                            <li class="list-group-item"><b>Total: </b>{{ \Cart::getTotal() }}€</li>
+                                            <li class="list-group-item"><b>Suma: </b>{{ \Cart::getTotal() }}€</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -126,7 +125,7 @@
                         @if (count($cartCollection) > 0)
                             <div class="col-lg-5">
                                 <hr>
-                                <h3 style="margin-top: 5px;">Buyer details:</h3>
+                                <h3 style="margin-top: 5px;">Pirkėjo informacija:</h3>
                                 @if ($errors->any())
                                     <div class="alert alert-danger" style="margin-top: 15px;">
                                         <ul>
@@ -143,28 +142,28 @@
                                     {!! Form::open(['route' => ['order.purchase'], 'method' => 'POST']) !!}
                                     <div class="form-group">
 
-                                        <p>{!! Form::label('name', 'Name:', ['class' => 'control-label', 'class' => 'required']) !!}
+                                        <p>{!! Form::label('name', 'Vardas:', ['class' => 'control-label', 'class' => 'required']) !!}
                                             {!! Form::text('name', $value = $user->name, ['id' => 'name', 'class' => 'form-control']) !!}</p>
 
-                                        <p>{!! Form::label('name', 'Email:', ['class' => 'control-label', 'class' => 'required']) !!}
+                                        <p>{!! Form::label('name', 'El. paštas:', ['class' => 'control-label', 'class' => 'required']) !!}
                                             {!! Form::text('email', $value = $user->email, ['id' => 'email', 'class' => 'form-control']) !!}</p>
 
-                                        <p>{!! Form::label('name', 'Address:', ['class' => 'control-label', 'class' => 'required']) !!}
+                                        <p>{!! Form::label('name', 'Adresas:', ['class' => 'control-label', 'class' => 'required']) !!}
                                             {!! Form::text('address', $value = $user->address, ['id' => 'address', 'class' => 'form-control']) !!}</p>
 
-                                        <p>{!! Form::label('name', 'City:', ['class' => 'control-label', 'class' => 'required']) !!}
+                                        <p>{!! Form::label('name', 'Miestas:', ['class' => 'control-label', 'class' => 'required']) !!}
                                             {!! Form::text('city', $value = $user->city, ['id' => 'city', 'class' => 'form-control']) !!}</p>
 
-                                        <p>{!! Form::label('name', 'State:', ['class' => 'control-label', 'class' => 'required']) !!}
+                                        <p>{!! Form::label('name', 'Rajonas:', ['class' => 'control-label', 'class' => 'required']) !!}
                                             {!! Form::text('state', $value = $user->state, ['id' => 'state', 'class' => 'form-control']) !!}</p>
 
-                                        <p>{!! Form::label('name', 'Zip Code:', ['class' => 'control-label', 'class' => 'required']) !!}
+                                        <p>{!! Form::label('name', 'Pašto kodas:', ['class' => 'control-label', 'class' => 'required']) !!}
                                             {!! Form::text('zip_code', $value = $user->zip_code, ['id' => 'zip_code', 'class' => 'form-control']) !!}</p>
 
                                         <div class="row">
                                             <div style="display: flex; flex-wrap: nowrap; margin-top: 10px;">
                                                 <button type="submit" class="btn btn-block btn-success">
-                                                    <a>Place order</a>
+                                                    <a>Pateikti užsakymą</a>
                                                 </button>
                                             </div>
                                         </div>
@@ -174,28 +173,28 @@
                                     @elseif ($user == null)
                                         {!! Form::open(['route' => ['order.purchase'], 'method' => 'POST']) !!}
                                         <div class="form-group">
-                                            <p>{!! Form::label('name', 'Name:', ['class' => 'control-label', 'class' => 'required']) !!}
+                                            <p>{!! Form::label('name', 'Vardas:', ['class' => 'control-label', 'class' => 'required']) !!}
                                                 {!! Form::text('name', '', ['id' => 'name', 'class' => 'form-control']) !!}</p>
 
-                                            <p>{!! Form::label('name', 'Email:', ['class' => 'control-label', 'class' => 'required']) !!}
+                                            <p>{!! Form::label('name', 'El. paštas:', ['class' => 'control-label', 'class' => 'required']) !!}
                                                 {!! Form::text('email', '', ['id' => 'email', 'class' => 'form-control']) !!}</p>
 
-                                            <p>{!! Form::label('name', 'Address:', ['class' => 'control-label', 'class' => 'required']) !!}
+                                            <p>{!! Form::label('name', 'Adresas:', ['class' => 'control-label', 'class' => 'required']) !!}
                                                 {!! Form::text('address', '', ['id' => 'address', 'class' => 'form-control']) !!}</p>
 
-                                            <p>{!! Form::label('name', 'City:', ['class' => 'control-label', 'class' => 'required']) !!}
+                                            <p>{!! Form::label('name', 'Miestas:', ['class' => 'control-label', 'class' => 'required']) !!}
                                                 {!! Form::text('city', '', ['id' => 'city', 'class' => 'form-control']) !!}</p>
 
-                                            <p>{!! Form::label('name', 'State:', ['class' => 'control-label', 'class' => 'required']) !!}
+                                            <p>{!! Form::label('name', 'Rajonas:', ['class' => 'control-label', 'class' => 'required']) !!}
                                                 {!! Form::text('state', '', ['id' => 'state', 'class' => 'form-control']) !!}</p>
 
-                                            <p>{!! Form::label('name', 'Zip Code:', ['class' => 'control-label', 'class' => 'required']) !!}
+                                            <p>{!! Form::label('name', 'Pašto kodas:', ['class' => 'control-label', 'class' => 'required']) !!}
                                                 {!! Form::text('zip_code', '', ['id' => 'zip_code', 'class' => 'form-control']) !!}</p>
 
                                             <div class="row">
                                                 <div style="display: flex; flex-wrap: nowrap; margin-top: 10px;">
                                                     <button type="submit" class="btn btn-block btn-success">
-                                                        <a>Place order</a>
+                                                        <a>Pateikti užsakymą</a>
                                                     </button>
                                                 </div>
                                             </div>

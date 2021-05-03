@@ -1,16 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Admin Dashboard') }}
+            {{ __('Administratoriaus meniu') }}
         </h2>
     </x-slot>
 
     <div class="container col-lg-12" style="margin-top: 40px">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item"><a href="/admin">Admin</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Products</li>
+                <li class="breadcrumb-item"><a href="/">Namai</a></li>
+                <li class="breadcrumb-item"><a href="/admin">Administracija</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Produktai</li>
             </ol>
         </nav>
 
@@ -28,22 +28,21 @@
 
                         <div class="row">
                             <div class="col-sm-12">
-                                <h1 class="display-3">Products</h1>
+                                <h1 class="display-3">Produktai</h1>
                                 <a style="margin: 19px;" href="{{ route('product.create') }}"
-                                    class="btn btn-primary">New
-                                    product</a>
+                                    class="btn btn-primary">Naujas produktas</a>
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <td>ID</td>
-                                            <td>Name</td>
-                                            <td>Slug</td>
-                                            <td>Category</td>
-                                            <td>Description</td>
-                                            <td>Price</td>
-                                            <td>Rating</td>
-                                            <td>Image path</td>
-                                            <td colspan=2>Actions</td>
+                                            <td>ID:</td>
+                                            <td>Vardas:</td>
+                                            <td>Nuorodos vardas:</td>
+                                            <td>Kategorija:</td>
+                                            <td>Aprašymas:</td>
+                                            <td>Kaina:</td>
+                                            <td>Įvertinimas:</td>
+                                            <td>Paveikslėlio nuoroda:</td>
+                                            <td colspan=2>Veiksmai:</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -56,19 +55,19 @@
                                                     <td>{{ $item->name }}</td>
                                                 @endforeach
                                                 <td>{{ $product->description }}</td>
-                                                <td>{{ $product->price }}</td>
+                                                <td>{{ $product->price }}€</td>
                                                 <td>{{ $product->averageRating }}</td>
                                                 <td>{{ $product->img_path }}</td>
                                                 <td>
                                                     <a href="{{ route('product.edit', $product->id) }}"
-                                                        class="btn btn-primary">Edit</a>
+                                                        class="btn btn-primary">Redaguoti</a>
                                                 </td>
                                                 <td>
                                                     <form action="{{ route('product.destroy', $product->id) }}"
                                                         method="post">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button class="btn btn-danger" type="submit">Delete</button>
+                                                        <button class="btn btn-danger" type="submit">Pašalinti</button>
                                                     </form>
                                                 </td>
                                             </tr>
