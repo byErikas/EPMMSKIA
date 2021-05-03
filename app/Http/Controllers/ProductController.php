@@ -22,7 +22,7 @@ class ProductController extends Controller
         $user = Auth::user();
         $python_exe = \config('var.python');
         $script = \config('var.nearest_neighbour');
-        $output = shell_exec("$python_exe $script $user->id 4");
+        $output = shell_exec("$python_exe $script $user->id 8");
         $output_array = explode("\n", $output);
 
         $items = collect([]);
