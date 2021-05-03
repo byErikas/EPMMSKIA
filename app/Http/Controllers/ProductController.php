@@ -65,7 +65,7 @@ class ProductController extends Controller
         }
 
         //CONTENT BASED FILTER - BASED TO ITEM ID
-        $output = shell_exec("/usr/bin/python3 /var/www/html/laravel-shop/public/py/content_based.py $item->id 4 2>&1; echo $?");
+        $output = shell_exec("python3 /var/www/html/laravel-shop/public/py/content_based.py $item->id 4 2>&1; echo $?");
         dd($output);
         $output_array = explode("\n", $output);
         $similar = collect([]);
