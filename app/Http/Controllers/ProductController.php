@@ -65,10 +65,7 @@ class ProductController extends Controller
         }
 
         //CONTENT BASED FILTER - BASED TO ITEM ID
-        $python_exe = \config('var.python');
-        $script = \config('var.content_based');
-        $output = shell_exec("python3 $script $item->id 4");
-        dd($output);
+        $output = shell_exec("python3 /var/www/html/laravel-shop/public/py/content_based.py $item->id 4");
         $output_array = explode("\n", $output);
         $similar = collect([]);
         foreach ($output_array as $suggestion) {
@@ -76,7 +73,6 @@ class ProductController extends Controller
                 $similar->add(Product::find($suggestion));
             }
         }
-        dd($similar);
         //END CONTENT BASED FILTER
 
         //RETURNS
