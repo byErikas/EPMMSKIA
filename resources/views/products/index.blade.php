@@ -41,7 +41,8 @@
                                             <td>Aprašymas:</td>
                                             <td>Kaina:</td>
                                             <td>Įvertinimas:</td>
-                                            <td>Paveikslėlio nuoroda:</td>
+                                            <td style="word-wrap: break-word; max-width: 100px;">Paveikslėlio nuoroda:
+                                            </td>
                                             <td colspan=2>Veiksmai:</td>
                                         </tr>
                                     </thead>
@@ -57,7 +58,8 @@
                                                 <td>{{ $product->description }}</td>
                                                 <td>{{ $product->price }}€</td>
                                                 <td>{{ $product->averageRating }}</td>
-                                                <td>{{ $product->img_path }}</td>
+                                                <td style="word-wrap: break-word; max-width: 110px;">
+                                                    {{ $product->img_path }}</td>
                                                 <td>
                                                     <a href="{{ route('product.edit', $product->id) }}"
                                                         class="btn btn-primary">Redaguoti</a>
