@@ -68,6 +68,7 @@ class ProductController extends Controller
         $python_exe = \config('var.python');
         $script = \config('var.content_based');
         $output = shell_exec("$python_exe $script $item->id 4");
+        dd($output);
         $output_array = explode("\n", $output);
         $similar = collect([]);
         foreach ($output_array as $suggestion) {
