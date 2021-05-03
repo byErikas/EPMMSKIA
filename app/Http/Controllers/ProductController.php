@@ -75,6 +75,7 @@ class ProductController extends Controller
                 $similar->add(Product::find($suggestion));
             }
         }
+        dd($similar);
         //END CONTENT BASED FILTER
 
         //RETURNS
