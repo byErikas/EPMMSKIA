@@ -39,7 +39,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::paginate(10);
-        return view('categories\index', compact('categories'));
+        return view('categories.index', compact('categories'));
     }
 
     /**
@@ -49,7 +49,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('categories\create');
+        return view('categories.create');
     }
 
     /**
@@ -93,7 +93,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
-        return view('categories\edit', compact('category'));
+        return view('categories.edit', compact('category'));
     }
 
     /**

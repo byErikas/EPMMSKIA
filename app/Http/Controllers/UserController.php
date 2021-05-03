@@ -104,7 +104,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::paginate(10);
-        return view('users\index', compact('users'));
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -114,7 +114,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users\create');
+        return view('users.create');
     }
 
     /**
@@ -166,7 +166,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('users\edit', compact('user'));
+        return view('users.edit', compact('user'));
     }
 
     /**
