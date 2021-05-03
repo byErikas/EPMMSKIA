@@ -67,7 +67,7 @@ class ProductController extends Controller
         //CONTENT BASED FILTER - BASED TO ITEM ID
         $python_exe = \config('var.python');
         $script = \config('var.content_based');
-        $output = shell_exec("$python_exe $script $item->id 4");
+        $output = shell_exec("python3 $script $item->id 4");
         dd($output);
         $output_array = explode("\n", $output);
         $similar = collect([]);
