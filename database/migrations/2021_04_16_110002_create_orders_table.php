@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->string('transaction_id');
-            $table->integer('total')->default(0);
+            $table->float('total')->default(0);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });
