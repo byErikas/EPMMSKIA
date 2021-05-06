@@ -39,7 +39,7 @@
                                 @foreach (App\Models\Category::all() as $category)
 
                                     <x-dropdown-link
-                                        href="{{ route('single.category', ['name' => $category->name]) }}">
+                                        href="{{ route('single.category', ['slug' => $category->slug]) }}">
                                         {{ $category->name }}
                                     </x-dropdown-link>
 
