@@ -45,6 +45,7 @@ class UserController extends Controller
         if (!Auth::check()) {
             $request->validate([
                 'name' => 'required',
+                'password' => 'required',
                 'email' => 'required|unique:users',
                 'address' => 'required',
                 'city' => 'required',
@@ -57,7 +58,7 @@ class UserController extends Controller
                     'email' => $request->input('email'),
                 ],
                 [
-                    'password' => Hash::make('password'),
+                    'password' => bcrypt($request->input('password')),
                     'name' => $request->input('name'),
                     'address' => $request->input('address'),
                     'city' => $request->input('city'),

@@ -119,7 +119,7 @@
                                 <div class="col-lg-3">
                                     <div class="card" style="margin-bottom: 20px; height: auto;">
                                         <img src="{{ $cat_item->img_path }}" class="card-img-top mx-auto"
-                                            style="height: 150px; width: 150px;display: block;"
+                                            style="height: 150px; width: 200px;display: block;"
                                             alt="{{ $cat_item->img_path }}">
                                         <div class="card-body">
                                             <a href="/items/{{ $cat_item->slug }}">
@@ -162,7 +162,7 @@
                                 <div class="col-lg-3">
                                     <div class="card" style="margin-bottom: 20px; height: auto;">
                                         <img src="{{ $cat_item->img_path }}" class="card-img-top mx-auto"
-                                            style="height: 150px; width: 150px;display: block;"
+                                            style="height: 150px; width: 200px;display: block;"
                                             alt="{{ $cat_item->img_path }}">
                                         <div class="card-body">
                                             <a href="/items/{{ $cat_item->slug }}">

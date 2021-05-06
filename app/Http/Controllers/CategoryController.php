@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -18,15 +19,15 @@ class CategoryController extends Controller
     public function returnCategory($category)
     {
         //return a requested category if it exists, or redirect to dashboard
-        $model = Category::where('name', '=', $category)->first();
-        if ($model == null) {
+        $category = Category::where('name', '=', $category)->first();
+        if ($category == null) {
             return redirect('dashboard');
         }
-        $products = $model->products;
 
+        $products = Product::where('category_id', $category->id)->get();
         return view('category')->with([
             'products' => $products,
-            'category' => $model->name
+            'category' => $category->name
         ]);
     }
 

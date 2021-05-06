@@ -15,14 +15,15 @@ class Product extends Model
         'slug',
         'description',
         'price',
-        'img_path'
+        'img_path',
+        'category_id',
     ];
 
     protected $guarded = [];
 
-    public function categories()
+    public function category()
     {
-        return $this->belongsToMany(Category::class, 'category_product')->withPivot('category_id');
+        return $this->belongsTo(Category::class, 'id');
     }
 
     public function orders()

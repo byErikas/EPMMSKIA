@@ -68,7 +68,7 @@
                                                     <b> <a href="/shop/{{ $item->attributes->slug }}">{{ $item->name }}
                                                         </a></b><br>
                                                     <b>Kaina: </b>{{ $item->price }}€<br>
-                                                    <b>Iš viso: </b>${{ \Cart::get($item->id)->getPriceSum() }}<br>
+                                                    <b>Iš viso: </b>{{ \Cart::get($item->id)->getPriceSum() }}€<br>
                                                 </p>
                                             </div>
                                             <div class="col-lg-4"
@@ -175,6 +175,9 @@
                                         <div class="form-group">
                                             <p>{!! Form::label('name', 'Vardas:', ['class' => 'control-label', 'class' => 'required']) !!}
                                                 {!! Form::text('name', '', ['id' => 'name', 'class' => 'form-control']) !!}</p>
+
+                                            <p>{!! Form::label('name', 'Slaptažodis:', ['class' => 'control-label', 'class' => 'required']) !!}
+                                                {!! Form::text('password', '', ['id' => 'password', 'class' => 'form-control']) !!}</p>
 
                                             <p>{!! Form::label('name', 'El. paštas:', ['class' => 'control-label', 'class' => 'required']) !!}
                                                 {!! Form::text('email', '', ['id' => 'email', 'class' => 'form-control']) !!}</p>

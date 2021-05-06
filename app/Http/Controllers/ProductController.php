@@ -45,9 +45,9 @@ class ProductController extends Controller
 
         //ITEM RATING AND CATEGORY ITEMS
         $rating = $item->averageRating;
-        $category = $item->categories->first()->name;
-        $cat_model = Category::where('name', '=', $category)->first();
-        $cat_items = $cat_model->products->take(5);
+        $category = $item->category_id;
+        $cat_name = Category::find($category);
+        $cat_items = Product::where('category_id', $category)->take(5)->get(); //$cat_model->products->take(5);
         $i = 0;
         $dupe = false;
         foreach ($cat_items as $prods) {
@@ -60,6 +60,7 @@ class ProductController extends Controller
         if ($dupe == false) {
             unset($cat_items[count($cat_items) - 1]);
         }
+
 
         //CONTENT BASED FILTER - BASED TO ITEM ID
         $output = shell_exec("python /var/www/html/laravel-shop/public/py/content_based.py $item->id 4");
@@ -75,7 +76,7 @@ class ProductController extends Controller
         //RETURNS
         return view('item')->with([
             'item' => $item,
-            'category' => $category,
+            'category' => $cat_name->name,
             'ratings' => $rating,
             'similar' => $similar,
             'cat_items' => $cat_items,
@@ -102,17 +103,18 @@ class ProductController extends Controller
             'name' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
-            'img_path' => 'required'
+            'img_path' => 'required',
+            'category' => 'required',
         ]);
 
-        $product = Product::find($id);
+        $product = Product::find($id)->first();
         $product->name =  $request->get('name');
         $product->slug = Str::slug($request->get('name'));
         $product->description = $request->get('description');
         $product->price = $request->get('price');
         $product->img_path = $request->get('img_path');
-        $product->categories->first()->pivot->category_id = $request->input('category');
-        $product->categories->first()->pivot->save();
+        $product->category_id = $request->input('category');
+
         $product->save();
 
         return redirect('/product')->with('success', 'Produktas atnaujintas!');
@@ -124,7 +126,8 @@ class ProductController extends Controller
             'name' => 'required|unique:products',
             'description' => 'required',
             'price' => 'required|numeric',
-            'img_path' => 'required'
+            'img_path' => 'required',
+            'category' => 'required',
         ]);
 
         $product = new Product([
@@ -133,6 +136,7 @@ class ProductController extends Controller
             'description' => $request->get('description'),
             'price' => $request->get('price'),
             'img_path' => $request->get('img_path'),
+            'category_id' => intval($request->input('category')),
         ]);
         $product->save();
         return redirect('/product')->with('success', 'Produktas sukurtas!');
@@ -140,7 +144,8 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('products.create');
+        $categories = Category::all();
+        return view('products.create', compact('categories'));
     }
 
     public function destroy($id)

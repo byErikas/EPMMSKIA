@@ -34,6 +34,16 @@
                                         <label for="description">Aprašymas:</label>
                                         <input type="text" class="form-control" name="description" />
                                     </div>
+
+                                    <div class="form-group">
+                                        <label for="category">Kategorija:</label>
+                                        <select name="category" class="form-control">
+                                            @foreach ($categories as $category)
+                                                <option value={{ $category->id }}>{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
                                     <div class="form-group">
                                         <label for="price">Kaina:</label>
                                         <input type="text" class="form-control" name="price" />
@@ -41,7 +51,9 @@
                                     <div class="form-group">
                                         <label for="img_path">Paveikslėlio nuoroda:</label>
                                         <input type="text" class="form-control" name="img_path" />
-                                        <button type="submit" class="btn btn-primary" style="margin-top: 15px;">Pridėti produktą</button>
+                                        <button type="submit" class="btn btn-primary" style="margin-top: 15px;">Pridėti
+                                            produktą</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
