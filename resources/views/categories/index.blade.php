@@ -35,7 +35,7 @@
                                     <thead>
                                         <tr>
                                             <td>ID:</td>
-                                            <td>Vardas:</td>
+                                            <td>Pavadinimas:</td>
                                             <td>Nuorodos vardas:</td>
                                             <td colspan=2>Veiksmai:</td>
                                         </tr>

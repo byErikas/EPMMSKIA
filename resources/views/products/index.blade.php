@@ -35,9 +35,9 @@
                                     <thead>
                                         <tr>
                                             <td>ID:</td>
-                                            <td>Vardas:</td>
-                                            <td>Nuorodos vardas:</td>
                                             <td>Kategorijos ID:</td>
+                                            <td>Pavadinimas:</td>
+                                            <td>Nuorodos vardas:</td>
                                             <td>Aprašymas:</td>
                                             <td>Kaina:</td>
                                             <td>Įvertinimas:</td>
@@ -50,9 +50,9 @@
                                         @foreach ($products as $product)
                                             <tr>
                                                 <td>{{ $product->id }}</td>
+                                                <td>{{ $product->category_id }}</td>
                                                 <td>{{ $product->name }}</td>
                                                 <td>{{ $product->slug }}</td>
-                                                <td>{{ $product->category_id }}</td>
                                                 <td>{{ $product->description }}</td>
                                                 <td>{{ $product->price }}€</td>
                                                 <td>{{ $product->averageRating }}</td>
