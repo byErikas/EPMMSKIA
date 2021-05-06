@@ -16,6 +16,7 @@ body {
 }
 
 
+
 /* Columns */
 
 .left-column {
@@ -40,13 +41,7 @@ body {
     transition: all 0.3s ease;
 }
 
-.left-column img.active {
-    opacity: 1;
-}
-
 /* Right Column */
-
-
 /* Product Description */
 
 .product-description {

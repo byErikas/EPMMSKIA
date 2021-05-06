@@ -22,18 +22,15 @@ body {
 }
 
 
+
 /* Left Column */
 
 .left-column img {
     width: 100%;
     left: 0;
     top: 0;
-    opacity: 0;
-    transition: all 0.3s ease;
-}
-
-.left-column img.active {
     opacity: 1;
+    transition: all 0.3s ease;
 }
 
 /* Right Column */
