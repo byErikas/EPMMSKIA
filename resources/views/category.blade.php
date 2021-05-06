@@ -32,10 +32,8 @@
                                         @foreach ($products as $pro)
                                             <div class="col-lg-3">
                                                 <div class="card" style="margin-bottom: 20px; height: auto;">
-                                                    <img src="https://dummyimage.com/600x600/828282/ffffff"
-                                                        class="card-img-top mx-auto"
-                                                        style="height: 150px; width: 150px;display: block;"
-                                                        alt="https://dummyimage.com/600x600/828282/ffffff">
+                                                    <img src="{{ $pro->img_path }}" class="card-img-top mx-auto"
+                                                        style="height: 150px; width: 200px;display: block;">
                                                     <div class="card-body">
                                                         <a href="/items/{{ $pro->slug }}">
                                                             <h6 class="card-title">{{ $pro->name }}</h6>
@@ -49,8 +47,7 @@
                                                                 name="name">
                                                             <input type="hidden" value="{{ $pro->price }}" id="price"
                                                                 name="price">
-                                                            <input type="hidden"
-                                                                value="https://dummyimage.com/600x600/828282/ffffff"
+                                                            <input type="hidden" value="{{ $pro->img_path }}"
                                                                 id="img" name="img">
                                                             <input type="hidden" value="{{ $pro->slug }}" id="slug"
                                                                 name="slug">

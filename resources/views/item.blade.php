@@ -42,7 +42,7 @@
                         </div>
                     </div>
 
-                    <div class="p-6 bg-white border-b border-gray-200" style="padding-bottom: 230px;">
+                    <div class="p-6 bg-white border-b border-gray-200">
                         <div class="itcontainer col-lg-12">
 
                             <!-- Left Column / Image -->

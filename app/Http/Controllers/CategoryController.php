@@ -19,7 +19,7 @@ class CategoryController extends Controller
     public function returnCategory($category)
     {
         //return a requested category if it exists, or redirect to dashboard
-        $category = Category::where('name', '=', $category)->first();
+        $category = Category::where('slug', '=', Str::slug($category))->first();
         if ($category == null) {
             return redirect('dashboard');
         }

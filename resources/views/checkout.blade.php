@@ -61,7 +61,7 @@
                                             <div class="col-lg-3">
 
                                                 <img src="{{ $item->attributes->image }}" class="img-thumbnail"
-                                                    width="200" height="200">
+                                                    style="height: 150px; width: 200px;display: block;">
                                             </div>
                                             <div class="col-lg-5">
                                                 <p>
