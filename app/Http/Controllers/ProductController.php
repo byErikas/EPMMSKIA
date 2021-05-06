@@ -92,7 +92,7 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $product = Product::find($id);
+        $product = Product::find($id)->first();
         $categories = Category::all();
         return view('products.edit', compact('product'), compact('categories'));
     }
