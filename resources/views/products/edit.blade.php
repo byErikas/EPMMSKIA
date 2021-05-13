@@ -29,14 +29,14 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="name"> Pavadinimas:</label>
-                                    <input type="text" class="form-control" name="name" value={{ $product->name }} />
+                                    <input type="text" class="form-control" name="name" value="{{ $product->name }}"/>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="category">Kategorija:</label>
                                     <select name="category" class="form-control">
                                         @foreach($categories as $category)
-                                        <option value={{$category->id}}>{{$category->name}}</option>
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -44,18 +44,18 @@
                                 <div class="form-group">
                                     <label for="description">Aprašymas:</label>
                                     <input type="text" class="form-control" name="description"
-                                        value={{ $product->description }} />
+                                        value="{{ $product->description }}"/>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="price">Kaina:</label>
                                     <input type="text" class="form-control" name="price"
-                                        value={{ $product->price }} />
+                                        value="{{ $product->price }}"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="img_path">Paveikslėlio nuoroda:</label>
                                     <input type="text" class="form-control" name="img_path"
-                                        value={{ $product->img_path }} />
+                                        value="{{ $product->img_path }}"/>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Atnaujinti</button>
                             </form>

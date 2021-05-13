@@ -10,7 +10,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Namai</a></li>
                 <li class="breadcrumb-item"><a href="/admin">Administracija</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Vartotojai</li>
+                <li class="breadcrumb-item active" aria-current="page">Užsakymai</li>
             </ol>
         </nav>
 
@@ -28,55 +28,49 @@
 
                         <div class="row">
                             <div class="col-sm-12">
-                                <h1 class="display-3">Vartotojai</h1>
-                                <a style="margin: 19px;" href="{{ route('user.create') }}"
-                                    class="btn btn-primary">Naujas vartotojas</a>
+                                <h1 class="display-3">Užsakymai</h1>
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
                                             <td>ID:</td>
-                                            <td>Vardas:</td>
-                                            <td>Rolė:</td>
-                                            <td>El. paštas:</td>
-                                            <td>Adresas:</td>
-                                            <td>Miestas:</td>
-                                            <td>Rajonas:</td>
-                                            <td>Pašto kodas:</td>
-                                            <td>Užsakymai:</td>
+                                            <td>Būsena:</td>
+                                            <td>Vartotojo ID:</td>
+                                            <td>Užsakymo nr.:</td>
+                                            <td>Produktai:</td>
+                                            <td>Suma:</td>
+                                            <td>Pateikimo data:</td>
                                             <td colspan=2>Veiksmai:</td>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($users as $user)
+                                        @foreach ($orders as $order)
                                             <tr>
-                                                <td>{{ $user->id }}</td>
-                                                <td>{{ $user->name }}</td>
-                                                <td>@switch($user->is_admin)
+                                                <td>{{ $order->id }}</td>
+                                                <td>@switch($order->state)
                                                         @case(0)
-                                                            Vartotojas
+                                                            Neatliktas
                                                         @break
                                                         @case(1)
-                                                            Administratorius
+                                                            Atliktas
                                                         @break
                                                         @default
                                                 @break
                                             @endswitch</td>
-                                            <td>{{ $user->email }}</td>
-                                            <td>{{ $user->address }}</td>
-                                            <td>{{ $user->city }}</td>
-                                            <td>{{ $user->state }}</td>
-                                            <td>{{ $user->zip_code }}</td>
+                                            <td>{{ $order->user_id }}</td>
+                                            <td>{{ $order->transaction_id }}</td>
                                             <td>
-                                                @foreach (json_decode($user->orders) as $order)
-                                                    {{ $order->transaction_id }} <br>
+                                                @foreach (json_decode($order->products) as $product)
+                                                    {{ $product->name }} <br>
                                                 @endforeach
                                             </td>
+                                            <td>{{ $order->total }}</td>
+                                            <td>{{ $order->created_at }}</td>
                                             <td>
-                                                <a href="{{ route('user.edit', $user->id) }}"
+                                                <a href="{{ route('order.edit', $order->id) }}"
                                                     class="btn btn-primary">Redaguoti</a>
                                             </td>
                                             <td>
-                                                <form action="{{ route('user.destroy', $user->id) }}" method="post">
+                                                <form action="{{ route('order.destroy', $order->id) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-danger" type="submit">Pašalinti</button>
@@ -90,7 +84,7 @@
                             </div>
                             {{-- Pagination --}}
                             <div class="d-flex justify-content-center">
-                                {!! $users->links() !!}
+                                {!! $orders->links() !!}
                             </div>
                         </div>
                     </div>

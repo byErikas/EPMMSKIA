@@ -71,6 +71,16 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-lg-3">
+                        <div class="card" style="margin-bottom: 20px; height: auto; margin-top: 20px;">
+                            <div class="card-body">
+                                <a href="/order">
+                                    <h6 class="card-title">Užsakymų valdymas</h6>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

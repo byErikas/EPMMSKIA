@@ -86,13 +86,13 @@ class ProductController extends Controller
     //CRUD FUNCTIONS
     public function index()
     {
-        $products = Product::paginate(10);
+        $products = Product::paginate(5);
         return view('products.index', compact('products'));
     }
 
     public function edit($id)
     {
-        $product = Product::find($id)->first();
+        $product = Product::find($id);
         $categories = Category::all();
         return view('products.edit', compact('product'), compact('categories'));
     }

@@ -25,12 +25,12 @@
                                 <br />
                             @endif
 
-                            <form method="post" action="{{ route('category.update', $user->id) }}">
+                            <form method="post" action="{{ route('user.update', $user->id) }}">
                                 @method('PATCH')
                                 @csrf
                                 <div class="form-group">
                                     <label for="name">Vardas:</label>
-                                    <input type="text" class="form-control" name="name" value={{ $user->name }} />
+                                    <input type="text" class="form-control" name="name" value="{{ $user->name }}" />
                                 </div>
 
                                 <div class="form-group">
@@ -43,29 +43,29 @@
 
                                 <div class="form-group">
                                     <label for="email">El. paštas:</label>
-                                    <input type="text" class="form-control" name="email" value={{ $user->email }} />
+                                    <input type="text" class="form-control" name="email" value="{{ $user->email }}" />
                                 </div>
 
                                 <div class="form-group">
                                     <label for="address">Adresas:</label>
                                     <input type="text" class="form-control" name="address"
-                                        value={{ $user->address }} />
+                                        value="{{ $user->address }}" />
                                 </div>
 
                                 <div class="form-group">
                                     <label for="city">Miestas:</label>
-                                    <input type="text" class="form-control" name="city" value={{ $user->city }} />
+                                    <input type="text" class="form-control" name="city" value="{{ $user->city }}" />
                                 </div>
 
                                 <div class="form-group">
                                     <label for="state">Rajonas:</label>
-                                    <input type="text" class="form-control" name="state" value={{ $user->state }} />
+                                    <input type="text" class="form-control" name="state" value="{{ $user->state }}" />
                                 </div>
 
                                 <div class="form-group">
                                     <label for="zip_code">Pašto kodas:</label>
                                     <input type="text" class="form-control" name="zip_code"
-                                        value={{ $user->zip_code }} />
+                                        value="{{ $user->zip_code }}" />
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Atnaujinti</button>

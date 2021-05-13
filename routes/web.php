@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('product', 'App\Http\Controllers\ProductController');
         Route::resource('category', 'App\Http\Controllers\CategoryController');
         Route::resource('user', 'App\Http\Controllers\UserController');
+        Route::resource('order', 'App\Http\Controllers\OrderController');
     });
 });
 

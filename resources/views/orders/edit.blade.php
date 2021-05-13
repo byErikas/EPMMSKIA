@@ -12,7 +12,7 @@
 
                     <div class="row">
                         <div class="col-sm-8 offset-sm-2">
-                            <h1 class="display-3">Redaguoti kategoriją</h1>
+                            <h1 class="display-3">Redaguoti užsakymą</h1>
 
                             @if ($errors->any())
                                 <div class="alert alert-danger">
@@ -25,14 +25,18 @@
                                 <br />
                             @endif
 
-                            <form method="post" action="{{ route('category.update', $category->id) }}">
+                            <form method="post" action="{{ route('order.update', $order->id) }}">
                                 @method('PATCH')
                                 @csrf
                                 <div class="form-group">
-                                    <label for="name"> Pavadinimas:</label>
-                                    <input type="text" class="form-control" name="name" value="{{ $category->name }}" />
+                                    <label for="state">Būsena:</label>
+                                    <select name="state" class="form-control">
+                                        <option value='0'>Neatliktas</option>
+                                        <option value='1'>Atliktas</option>
+                                    </select>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Išsaugoti</button>
+
+                                <button type="submit" class="btn btn-primary">Atnaujinti</button>
                             </form>
 
                         </div>
