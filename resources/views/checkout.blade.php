@@ -65,7 +65,7 @@
                                             </div>
                                             <div class="col-lg-5">
                                                 <p>
-                                                    <b> <a href="/shop/{{ $item->attributes->slug }}">{{ $item->name }}
+                                                    <b> <a href="/items/{{ $item->attributes->slug }}">{{ $item->name }}
                                                         </a></b><br>
                                                     <b>Kaina: </b>{{ $item->price }}€<br>
                                                     <b>Iš viso: </b>{{ \Cart::get($item->id)->getPriceSum() }}€<br>
