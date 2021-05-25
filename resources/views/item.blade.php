@@ -157,7 +157,7 @@
                         </div>
                     @endif
 
-                    @if (count(cat_items) > 0)
+                    @if (count($cat_items) > 0)
                         <div class="p-6 bg-white border-b border-gray-200">
                             <div class="product-description">
                                 <span>Daugiau iš <h5>{{ $category }}:</h5></span>
