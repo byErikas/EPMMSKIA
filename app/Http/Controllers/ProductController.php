@@ -20,7 +20,7 @@ class ProductController extends Controller
     public function userRecommendations()
     {
         $user = Auth::user();
-        $output = shell_exec("python /var/www/html/laravel-shop/public/py/nearest_neighbour.py $user->id 4");
+        $output = shell_exec("python /var/www/html/laravel-shop/public/py/nearest_neighbour.py $user->id 8");
         $output_array = explode("\n", $output);
         $items = collect([]);
         foreach ($output_array as $item)
