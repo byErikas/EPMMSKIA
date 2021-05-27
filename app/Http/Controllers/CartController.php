@@ -12,7 +12,7 @@ class CartController extends Controller
     public function shop()
     {
         //PRODUCT PAGINATION
-        $products = Product::paginate(12);
+        $products = Product::orderBy('name')->paginate(12);
 
         //PULL MOST PURCHASED ITEMS
         $sql = 'SELECT product_id, SUM(quantity) AS TotalQuantity FROM order_product GROUP BY product_id ORDER BY SUM(quantity) DESC';
