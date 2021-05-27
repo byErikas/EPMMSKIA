@@ -187,7 +187,12 @@ class UserController extends Controller
 
         $user = User::find($id);
         $user->name =  $request->get('name');
-        $user->slug = Str::slug($request->get('name'));
+        $user->is_admin =  $request->input('is_admin');
+        $user->email = $request->get('email');
+        $user->address = $request->get('address');
+        $user->city = $request->get('city');
+        $user->state = $request->get('state');
+        $user->zip_code = $request->get('zip_code');
         $user->save();
 
         return redirect('/user')->with('success', 'Vartotojas atnaujintas!');
