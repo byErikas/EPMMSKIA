@@ -13,66 +13,61 @@
 
                     {{-- CONTENT --}}
 
-
-                    <div class="p-6 bg-white border-b border-gray-200">
-                        @if (count($rating_based) != 0)
-                            {{-- END IF THERE ARE TOP ITEMS CHECK --}}
-                            <div class="p-6 bg-white border-b border-gray-200">
-                                <div class="product-description">
-                                    <span>
-                                        <h5>Remiantis vartotojais su panašiais interesais:</h5>
-                                    </span>
-                                </div>
-                                <div class="row">
-                                    @foreach ($rating_based as $item)
-                                        <div class="col-lg-3">
-                                            <div class="card" style="margin-bottom: 20px; height: auto;">
-                                                <img src="{{ $item->img_path }}" class="card-img-top mx-auto"
-                                                    style="height: 150px; width: 150px;display: block;"
-                                                    alt="{{ $item->img_path }}">
-                                                <div class="card-body">
-                                                    <a href="/items/{{ $item->slug }}">
-                                                        <h6 class="card-title">{{ $item->name }}</h6>
-                                                    </a>
-                                                    <p>{{ $item->price }}€</p>
-                                                    <form action="{{ route('cart.store') }}" method="POST">
-                                                        {{ csrf_field() }}
-                                                        <input type="hidden" value="{{ $item->id }}" id="id"
-                                                            name="id">
-                                                        <input type="hidden" value="{{ $item->name }}" id="name"
-                                                            name="name">
-                                                        <input type="hidden" value="{{ $item->price }}" id="price"
-                                                            name="price">
-                                                        <input type="hidden" value="{{ $item->img_path }}" id="img"
-                                                            name="img">
-                                                        <input type="hidden" value="{{ $item->slug }}" id="slug"
-                                                            name="slug">
-                                                        <input type="hidden" value="1" id="quantity" name="quantity">
-                                                        <div class="card-footer" style="background-color: white;">
-                                                            <div class="row">
-                                                                <button class="btn btn-secondary btn-sm"
-                                                                    class="tooltip-test" title="add to cart"
-                                                                    type="submit">
-                                                                    <i class="fa fa-shopping-cart"></i>Į krepšelį
-                                                                </button>
-                                                            </div>
+                    @if (count($rating_based) != 0)
+                        {{-- END IF THERE ARE TOP ITEMS CHECK --}}
+                        <div class="p-6 bg-white border-b border-gray-200">
+                            <div class="product-description">
+                                <span>
+                                    <h5>Remiantis vartotojais su panašiais interesais:</h5>
+                                </span>
+                            </div>
+                            <div class="row">
+                                @foreach ($rating_based as $item)
+                                    <div class="col-lg-3">
+                                        <div class="card" style="margin-bottom: 20px; height: auto;">
+                                            <img src="{{ $item->img_path }}" class="card-img-top mx-auto"
+                                                style="height: 150px; width: 150px;display: block;"
+                                                alt="{{ $item->img_path }}">
+                                            <div class="card-body">
+                                                <a href="/items/{{ $item->slug }}">
+                                                    <h6 class="card-title">{{ $item->name }}</h6>
+                                                </a>
+                                                <p>{{ $item->price }}€</p>
+                                                <form action="{{ route('cart.store') }}" method="POST">
+                                                    {{ csrf_field() }}
+                                                    <input type="hidden" value="{{ $item->id }}" id="id" name="id">
+                                                    <input type="hidden" value="{{ $item->name }}" id="name"
+                                                        name="name">
+                                                    <input type="hidden" value="{{ $item->price }}" id="price"
+                                                        name="price">
+                                                    <input type="hidden" value="{{ $item->img_path }}" id="img"
+                                                        name="img">
+                                                    <input type="hidden" value="{{ $item->slug }}" id="slug"
+                                                        name="slug">
+                                                    <input type="hidden" value="1" id="quantity" name="quantity">
+                                                    <div class="card-footer" style="background-color: white;">
+                                                        <div class="row">
+                                                            <button class="btn btn-secondary btn-sm"
+                                                                class="tooltip-test" title="add to cart" type="submit">
+                                                                <i class="fa fa-shopping-cart"></i>Į krepšelį
+                                                            </button>
                                                         </div>
-                                                    </form>
-                                                </div>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
-                                    @endforeach
-                                </div>
+                                    </div>
+                                @endforeach
                             </div>
-                        @endif
+                        </div>
+                    @endif
 
-                        @if (count($rating_based) == 0)
-                            <div class="p-6 bg-white border-b border-gray-200">
-                                Nepakankamai produktų įvertinta suformuoti rekomendacijas.
-                            </div>
-                        @endif
+                    @if (count($rating_based) == 0)
+                        <div class="p-6 bg-white border-b border-gray-200">
+                            Nepakankamai produktų įvertinta suformuoti rekomendacijas.
+                        </div>
+                    @endif
 
-                    </div>
                     {{-- END CONTENT --}}
 
                 </div>
