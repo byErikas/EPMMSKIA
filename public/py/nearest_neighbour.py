@@ -55,4 +55,4 @@ else:
 
     n_items = take(int(sys.argv[2]), sorted_d.items())
     for item in n_items:
-        print(item[0], item[1])
+        print(item[0])
