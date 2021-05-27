@@ -19,14 +19,15 @@ except Exception as e:
 
 # DATA TABLE - RATINGS
 df = pd.DataFrame(ds_ratings)
+df_item = pd.DataFrame(ds_products)
 df_users = df['user_id'].astype(int)
 df_reshaped = df[['user_id', 'rateable_id', 'rating']].copy()
+df_reshaped = df_reshaped.apply(pd.to_numeric)
 
 counter = 0
 for row in df_users:
     if(row == int(sys.argv[1])):
         counter += 1
-
 
 if (counter < 3):
     print("NAN")
@@ -38,19 +39,15 @@ else:
         "user_based":  True,
     }
 
-    algo = KNNWithMeans(sim_options=sim_options)
-
-    reader = Reader()
+    algo = KNNWithMeans(sim_options=sim_options, verbose=True)
+    reader = Reader(rating_scale=(1, 5))
     data = Dataset.load_from_df(df_reshaped, reader)
-
     trainingSet = data.build_full_trainset()
-
     algo.fit(trainingSet)
-
     array = ds_products['id']
     pred = {}
-    for index, row in df.iterrows():
-        prediction = algo.predict(int(sys.argv[1]), row['id'])
+    for index, row in df_item.iterrows():
+        prediction = algo.predict(int(sys.argv[1]), int(row['id']))
         pred.update({row['id']: prediction.est})
 
     sorted_d = dict(
@@ -58,4 +55,4 @@ else:
 
     n_items = take(int(sys.argv[2]), sorted_d.items())
     for item in n_items:
-        print(item[0])
+        print(item[0], item[1])
