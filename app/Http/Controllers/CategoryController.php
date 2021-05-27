@@ -24,7 +24,7 @@ class CategoryController extends Controller
             return redirect('dashboard');
         }
 
-        $products = Product::where('category_id', $category->id)->get();
+        $products = Product::where('category_id', $category->id)->orderBy('name')->paginate(12);
         return view('category')->with([
             'products' => $products,
             'category' => $category->name
