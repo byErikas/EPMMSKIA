@@ -107,7 +107,7 @@ class ProductController extends Controller
             'category' => 'required',
         ]);
 
-        $product = Product::find($id)->first();
+        $product = Product::find($id);
         $product->name =  $request->get('name');
         $product->slug = Str::slug($request->get('name'));
         $product->description = $request->get('description');
