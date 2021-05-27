@@ -176,8 +176,12 @@
                                             <p>{!! Form::label('name', 'Vardas:', ['class' => 'control-label', 'class' => 'required']) !!}
                                                 {!! Form::text('name', '', ['id' => 'name', 'class' => 'form-control']) !!}</p>
 
-                                            <p>{!! Form::label('name', 'Slaptažodis:', ['class' => 'control-label', 'class' => 'required']) !!}
-                                                {!! Form::text('password', '', ['id' => 'password', 'class' => 'form-control']) !!}</p>
+                                            <p>
+                                            <div class="form-group">
+                                                <label for="password" class="required">Slaptažodis:</label>
+                                                <input type="password" class="form-control" name="password" value="" />
+                                            </div>
+                                            </p>
 
                                             <p>{!! Form::label('name', 'El. paštas:', ['class' => 'control-label', 'class' => 'required']) !!}
                                                 {!! Form::text('email', '', ['id' => 'email', 'class' => 'form-control']) !!}</p>
