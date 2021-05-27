@@ -34,8 +34,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="role">Rolė:</label>
-                                    <select name="role" class="form-control">
+                                    <label for="is_admin">Rolė:</label>
+                                    <select name="is_admin" class="form-control">
                                         <option value='0'>Vartotojas</option>
                                         <option value='1'>Administratorius</option>
                                     </select>
