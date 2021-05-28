@@ -37,6 +37,7 @@
                                             <td>Vartotojo ID:</td>
                                             <td>Užsakymo nr.:</td>
                                             <td>Produktai:</td>
+                                            <td>Kiekis vnt.:</td>
                                             <td>Suma:</td>
                                             <td>Pateikimo data:</td>
                                             <td colspan=2>Veiksmai:</td>
@@ -59,10 +60,11 @@
                                             <td>{{ $order->user_id }}</td>
                                             <td>{{ $order->transaction_id }}</td>
                                             <td>
-                                                @foreach (json_decode($order->products) as $product)
-                                                    {{ $product->name }} <br>
+                                                @foreach (json_decode($order->products) as $prd)
+                                                     {{ $prd->name }} <br>
                                                 @endforeach
                                             </td>
+                                            <td>{{$prd->pivot->quantity}} </td>
                                             <td>{{ $order->total }}€</td>
                                             <td>{{ $order->created_at }}</td>
                                             <td>
