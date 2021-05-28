@@ -47,7 +47,8 @@ class ProductController extends Controller
         $rating = $item->averageRating;
         $category = $item->category_id;
         $cat_name = Category::find($category);
-        $cat_items = Product::where('category_id', $category)->take(5)->get(); //$cat_model->products->take(5);
+        $cat_items = Product::where('category_id', $category)->get(); //$cat_model->products->take(5);
+      //  dd($cat_items);
         $i = 0;
         $dupe = false;
         foreach ($cat_items as $prods) {
@@ -72,6 +73,14 @@ class ProductController extends Controller
             }
         }
         //END CONTENT BASED FILTER
+        $c = 0;
+        foreach ($similar as $rec_item) {
+            foreach ($cat_items as $cat_item) {
+                if ($rec_item->slug == $cat_item->slug) {
+                    unset($cat_items[$c++]);
+                }
+            }
+        }
 
         //RETURNS
         return view('item')->with([
