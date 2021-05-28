@@ -36,8 +36,9 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $orders = $user->orders;
+        $s_orders = $orders->sortByDesc('created_at');
 
-        return view('order')->with(['orders' => $orders]);
+        return view('order')->with(['orders' => $s_orders]);
     }
 
     public function purchase(Request $request)
