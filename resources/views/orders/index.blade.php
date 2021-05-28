@@ -61,10 +61,15 @@
                                             <td>{{ $order->transaction_id }}</td>
                                             <td>
                                                 @foreach (json_decode($order->products) as $prd)
-                                                     {{ $prd->name }} <br>
+                                                    {{ $prd->name }} <br>
+
                                                 @endforeach
                                             </td>
-                                            <td>{{$prd->pivot->quantity}} </td>
+                                            <td>
+                                                @foreach (json_decode($order->products) as $prd)
+                                                    {{ $prd->pivot->quantity }} <br>
+                                                @endforeach
+                                            </td>
                                             <td>{{ $order->total }}€</td>
                                             <td>{{ $order->created_at }}</td>
                                             <td>

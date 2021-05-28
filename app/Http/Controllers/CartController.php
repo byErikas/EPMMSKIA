@@ -22,7 +22,7 @@ class CartController extends Controller
         //FROM ARRAY ID'S TO MODEL COLLECTION
         foreach ($results as $item) {
             $i++;
-            if ($i == 9) {
+            if ($i == 5) {
                 break;
             }
             $model = Product::find($item->product_id);
