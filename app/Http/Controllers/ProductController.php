@@ -47,8 +47,7 @@ class ProductController extends Controller
         $rating = $item->averageRating;
         $category = $item->category_id;
         $cat_name = Category::find($category);
-        $cat_items = Product::where('category_id', $category)->get(); //$cat_model->products->take(5);
-      //  dd($cat_items);
+        $cat_items = Product::where('category_id', $category)->get();
         $i = 0;
         $dupe = false;
         foreach ($cat_items as $prods) {
@@ -62,9 +61,10 @@ class ProductController extends Controller
             unset($cat_items[count($cat_items) - 1]);
         }
 
-
         //CONTENT BASED FILTER - BASED TO ITEM ID
         $output = shell_exec("python /var/www/html/laravel-shop/public/py/content_based.py $item->id 4");
+        // C:/Users/Erikas/eshop/laravel8-shop/public/py/content_based.py
+        // /var/www/html/laravel-shop/public/py/content_based.py
         $output_array = explode("\n", $output);
         $similar = collect([]);
         foreach ($output_array as $suggestion) {
@@ -73,22 +73,15 @@ class ProductController extends Controller
             }
         }
         //END CONTENT BASED FILTER
-        $c = 0;
-        foreach ($similar as $rec_item) {
-            foreach ($cat_items as $cat_item) {
-                if ($rec_item->slug == $cat_item->slug) {
-                    unset($cat_items[$c++]);
-                }
-            }
-        }
 
+        $filtered = $cat_items->diff($similar)->take(4);
         //RETURNS
         return view('item')->with([
             'item' => $item,
             'category' => $cat_name->name,
             'ratings' => $rating,
             'similar' => $similar,
-            'cat_items' => $cat_items,
+            'cat_items' => $filtered,
         ]);
     }
 
