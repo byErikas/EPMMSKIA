@@ -6,7 +6,7 @@ from sklearn.metrics.pairwise import linear_kernel
 
 try:
     mydb = connection.connect(
-        host="filmtestdata.northeurope.cloudapp.azure.com", database='laravel8-shop', user="pard", passwd="Erikutiss19", use_pure=True)
+        host="104.45.88.17", database='laravel8-shop', user="pard", passwd="Erikutiss19", use_pure=True)
     query = "Select * from products;"
     ds = pd.read_sql(query, mydb)
     mydb.close()  # close the connection
