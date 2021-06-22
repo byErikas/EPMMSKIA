@@ -10,12 +10,20 @@
 
 ## EPMMSKIA
 
-El. parduotuvė sukurta naudojantis Laravel karkasu, su integruota produktų rekomendavimo sistemos prototipu. Parduotuvė pastatyta naudojantis:
+El. parduotuvė sukurta naudojantis Laravel karkasu, su integruotu produktų rekomendavimo sistemos prototipu. Parduotuvė pastatyta naudojantis:
 
 - PHP
 - NodeJS
 - Python
 - MySQL duom. baze
+
+Esminės ypatybės:
+
+- Produktų ir kategorijų peržiūros puslapiai
+- Vartotojo galimybė peržiūrėti savo užsakymus ar informaciją
+- Adminstracinis meniu skirtas produktų, kategorijų, vartotojų ir užsakymų valdymui
+- Užsakymo pateikimo puslapis su galimybe juos pateikti
+- Python pagalba populiariausių ir panašių produktų rekomendavimas. Vartotojo remtais įvertinimais rekomendacijos
 
 ## About Laravel
 
