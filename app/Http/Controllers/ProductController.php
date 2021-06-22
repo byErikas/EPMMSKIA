@@ -20,7 +20,7 @@ class ProductController extends Controller
     public function userRecommendations()
     {
         $user = Auth::user();
-        $output = shell_exec("python /var/www/html/laravel-shop/public/py/nearest_neighbour.py $user->id 8");
+        $output = shell_exec("python /var/www/html/laravel-shop/resources/py/nearest_neighbour.py $user->id 8");
         $output_array = explode("\n", $output);
         $items = collect([]);
         foreach ($output_array as $item)
@@ -62,7 +62,7 @@ class ProductController extends Controller
         }
 
         //CONTENT BASED FILTER - BASED TO ITEM ID
-        $output = shell_exec("python /var/www/html/laravel-shop/public/py/content_based.py $item->id 4");
+        $output = shell_exec("python /var/www/html/laravel-shop/resources/py/content_based.py $item->id 4");
         // C:/Users/Erikas/eshop/laravel8-shop/public/py/content_based.py
         // /var/www/html/laravel-shop/public/py/content_based.py
         $output_array = explode("\n", $output);
