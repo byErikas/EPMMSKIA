@@ -7,7 +7,7 @@ from surprise import KNNWithMeans
 
 try:
     mydb = connection.connect(
-        host="104.45.88.17", database='laravel8-shop', user="pard", passwd="Erikutiss19", use_pure=True)
+        host="IP", database='DB', user="USR", passwd="PW", use_pure=True)
     query = "Select * from ratings;"
     ds_ratings = pd.read_sql(query, mydb)
     query = "Select * from products;"
@@ -55,4 +55,4 @@ else:
 
     n_items = take(int(sys.argv[2]), sorted_d.items())
     for item in n_items:
-        print(item[0], item[1])
+        print(item[0])
