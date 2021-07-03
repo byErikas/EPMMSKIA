@@ -10,7 +10,7 @@
 
 ## EPMMSKIA
 
-El. parduotuvė sukurta naudojantis Laravel karkasu, su integruotu produktų rekomendavimo sistemos prototipu. Parduotuvė pastatyta naudojantis:
+KK baigiamojo darbo užduotis – Elektroninės priekybos mašininio mokymo sistema klientų informacijos apdorojimui. El. parduotuvė sukurta naudojantis Laravel karkasu, su integruotu produktų rekomendavimo sistemos prototipu. Parduotuvė pastatyta naudojantis:
 
 - PHP
 - NodeJS
