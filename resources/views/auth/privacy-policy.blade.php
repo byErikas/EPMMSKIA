@@ -38,7 +38,9 @@
                             svetaine susijusi informacija yra naudojama kurti ataskaitas apie naudojimąsi šia
                             interneto
                             svetaine. <br>Šią informaciją laikys Google. Google privatumo politika prieinama čia:
-                            <a href="http://www.google.com/privacypolicy.html">http://www.google.com/privacypolicy.html</a> . Pas mus besireklamuojantieji arba mokėjimo
+                            <a
+                                href="http://www.google.com/privacypolicy.html">http://www.google.com/privacypolicy.html</a>
+                            . Pas mus besireklamuojantieji arba mokėjimo
                             paslaugų
                             teikėjai irgi gali siųsti Jums slapukus. Savo interneto svetainėje mes skelbiame Google
                             Adsense
@@ -49,15 +51,20 @@
                             peržiūrėti, ištrinti ir pridėti interesų kategorijas, susietas su Jūsų naršykle,
                             naudodami
                             Google bendrovės Ads Preference Manager, kurį galima rasti adresu
-                            <a href="http://www.google.com/ads/preferences/">http://www.google.com/ads/preferences/</a>. Jūs galite atsisakyti Adsense partnerių tinklo
+                            <a href="http://www.google.com/ads/preferences/">http://www.google.com/ads/preferences/</a>.
+                            Jūs galite atsisakyti Adsense partnerių tinklo
                             slapuko
-                            adresu <a href="http://www.google.com/privacy_ads.html">http://www.google.com/privacy_ads.html</a>. Tačiau šiame atsisakymo mechanizme
+                            adresu <a
+                                href="http://www.google.com/privacy_ads.html">http://www.google.com/privacy_ads.html</a>.
+                            Tačiau šiame atsisakymo mechanizme
                             naudojamas
                             slapukas, ir jeigu Jūs ištrinsite slapukus iš savo kompiuterio, tai Jūsų atsisakymas
                             nebus
                             išsaugotas. Kad užsitikrintumėte, jog atsisakymas būtų išsaugotas konkrečiai naršyklei,
                             turėtumėte naudoti Google naršyklės įskiepį, kurį galima rasti adresu
-                            <a href="http://www.google.com/ads/preferences/plugin">http://www.google.com/ads/preferences/plugin</a>.<br> Dauguma naršyklių leidžia Jums nepriimti
+                            <a
+                                href="http://www.google.com/ads/preferences/plugin">http://www.google.com/ads/preferences/plugin</a>.<br>
+                            Dauguma naršyklių leidžia Jums nepriimti
                             jokių
                             slapukų, nors tam tikros naršyklės leidžia Jums nepriimti tik trečiųjų šalių slapukų.
                             Pavyzdžiui, Internet Explorer naršyklėje galite atsisakyti visų slapukų spausdami
@@ -99,7 +106,75 @@
                             5. Trečiųjų šalių interneto svetainės<br>
                             Šioje interneto svetainėje yra nuorodų į kitas interneto svetaines. Mes nesame atsakingi
                             už
-                            trečiųjų šalių interneto svetainių privatumo politikas ar praktikas.</p>
+                            trečiųjų šalių interneto svetainių privatumo politikas ar praktikas.<br><br>
+                        </div>
+                        <div class="itcontainer col-lg-12">
+                            6. Asmens duomenų subjektų teisės:<br>
+
+                            • Mes užtikriname Jums galimybę naudotis visomis teisėmis, kurias Jums suteikia duomenų
+                            apsaugos teisės aktai. Toliau pateikiame informaciją apie konkrečias Jūsų teises, kuriomis
+                            Jūs galite laisvai naudotis, ir jų įgyvendinimo būdus. Norėdami pasinaudoti šiomis teisėmis,
+                            prašome pateikti mums raštišką prašymą šioje Privatumo politikoje nurodytais
+                            kontaktais.<br><br>
+
+                            Teisė susipažinti su tvarkomais asmens duomenimis:<br>
+
+                            • Jūs turite teisę prašyti Mūsų patvirtinimo, ar Mes tvarkome Jūsų asmens duomenis. Jūs taip
+                            pat turite teisę susipažinti su tvarkomais Jūsų asmens duomenimis ir informacija apie
+                            tvarkomų duomenų kategorijas, duomenų tvarkymo tikslą, duomenų tvarkymo laikotarpį, duomenų
+                            gavimo šaltinius, duomenų gavėjų kategorijas, automatizuotą sprendimų priėmimą, įskaitant
+                            profiliavimą, jei jis yra taikomas, bei jo reikšmę ir pasekmes Jums.<br><br>
+
+                            Teisė ištaisyti neteisingus asmens duomenis:<br>
+
+                            • Jūs turite teisę reikalauti pakeisti, papildyti, patikslinti ar ištaisyti Mūsų tvarkomus
+                            Jūsų asmens duomenis, jeigu Jūs manote, kad Mūsų tvarkoma informacija apie Jus yra netiksli
+                            ar neteisinga.<br><br>
+
+                            Teisė ištrinti asmens duomenis (teisė būti pamirštam):<br>
+
+                            • Jūs turite teisę prašyti, kad Mes ištrintume Jūsų asmens duomenis, jeigu egzistuoja tam
+                            tikros asmens duomenų tvarkymo teisės aktuose nurodytos aplinkybės (kai asmens duomenys
+                            tvarkomi neteisėtai, išnyko duomenų tvarkymo pagrindas ir kt.).<br><br>
+
+                            Teisė apriboti asmens duomenų tvarkymą:<br>
+
+                            • Esant tam tikroms asmens duomenų tvarkymo teisės aktuose įvardintoms aplinkybėms (kai
+                            asmens
+                            duomenys tvarkomi neteisėtai, Jūs užginčijate duomenų tikslumą, Jūs pateikėte prieštaravimą
+                            dėl duomenų tvarkymo Mūsų teisėto intereso pagrindu ir kt.), Jūs taip pat turite teisę
+                            apriboti Jūsų asmens duomenų tvarkymą.<br><br>
+
+                            Teisė į duomenų perkeliamumą:<br>
+
+                            • Jūs turite teisę perkelti kitam duomenų valdytojui asmens duomenis, kuriuos Mes tvarkome
+                            Jūsų sutikimo pagrindu ir kurių tvarkymas atliekamas taikant automatizuotas priemones. Jūsų
+                            pageidaujamus perkelti duomenis Jums pateiksime įprastai Mūsų sistemose naudojamu ir
+                            kompiuterio skaitomu formatu, o Jums pageidaujant ir esant techninėms galimybėms, persiųsime
+                            duomenis tiesiogiai Jūsų nurodytam kitam duomenų valdytojui.<br><br>
+
+                            Teisė prieštarauti, kai asmens duomenų tvarkymas pagrįstas teisėtais interesais:<br>
+
+                            • Jūs turite teisę nesutikti su asmens duomenų tvarkymu, kai asmens duomenys yra tvarkomi
+                            remiantis Mūsų teisėtais interesais.<br><br>
+
+                            Teisė atšaukti sutikimą dėl asmens duomenų tvarkymo:<br>
+
+                            • Jūs turite teisę bet kada atšaukti savo sutikimą ir Jūsų sutikimu grindžiamas duomenų
+                            tvarkymas bus nutrauktas. Jūs galite bet kada atšaukti savo sutikimą gauti tiesioginės
+                            rinkodaros pranešimus, pasiūlymus ir informaciją. Savo sutikimus Jūs galite atšaukti ar iš
+                            naujo suteikti, pateikdami atitinkamai atnaujintą informaciją susisiekę su Mumis šioje
+                            Privatumo politikoje nurodytais būdais ir kontaktais. Nustojus galioti Jūsų sutikimui, jį
+                            atšaukus arba panaikinus, Mes nebetvarkysime Jūsų asmens duomenų. Bet kokiu atveju Jūsų
+                            suteiktą sutikimą ir įrodymą apie jį Mes galime saugoti ir ilgesnį laikotarpį, jei to
+                            reikia, kad galėtume apsiginti nuo mums pareikštų reikalavimų, pretenzijų ar ieškinių.<br><br>
+                        </div>
+                        <div class="itcontainer col-lg-12">
+                            7. Mūsų kontaktiniai duomenys<br>
+
+                            Visais asmens duomenų tvarkymo klausimais su Mumis susisiekti galite čia:<br>
+
+                            • elektroniniu paštu: duomenys@epmmskia.lt
                         </div>
                     </div>
                 </div>

@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 use App\Models\User;
+
 
 class UserController extends Controller
 {
@@ -16,14 +16,10 @@ class UserController extends Controller
         return view('profile', compact('user'));
     }
 
-    public function privacy()
-    {
-        return view('auth.privacy-policy');
-    }
-
     public function profileUpdate(Request $request)
     {
-        $user = Auth::user();
+        $userId = Auth::id();
+        $user = User::findOrFail($userId);
 
         $this->validate($request, [
             'name' => 'required|max:255|unique:users,name,' . $user->id,
@@ -31,7 +27,6 @@ class UserController extends Controller
         ]);
 
         $input = $request->only('name', 'email', 'address', 'city', 'state', 'zip_code');
-
         $user->update($input);
 
         return back();
@@ -45,62 +40,6 @@ class UserController extends Controller
 
         return view('order')->with(['orders' => $s_orders]);
     }
-
-    public function purchase(Request $request)
-    {
-        if (!Auth::check()) {
-            $request->validate([
-                'name' => 'required',
-                'password' => 'required',
-                'email' => 'required|unique:users',
-                'address' => 'required',
-                'city' => 'required',
-                'state' => 'required',
-                'zip_code' => 'required'
-            ]);
-
-            $user = User::firstOrCreate(
-                [
-                    'email' => $request->input('email'),
-                ],
-                [
-                    'password' => bcrypt($request->input('password')),
-                    'name' => $request->input('name'),
-                    'address' => $request->input('address'),
-                    'city' => $request->input('city'),
-                    'state' => $request->input('state'),
-                    'zip_code' => $request->input('zip_code')
-                ]
-            );
-            Auth::login($user);
-        } else {
-            $request->validate([
-                'name' => 'required',
-                'email' => 'required',
-                'address' => 'required',
-                'city' => 'required',
-                'state' => 'required',
-                'zip_code' => 'required'
-            ]);
-            $user = Auth()->user();
-        }
-        $transaction_id = Str::random(12);
-        $order = $user->orders()
-            ->create([
-                'transaction_id' => $transaction_id,
-                'total' => \Cart::getTotal()
-            ]);
-
-        $cart_items = \Cart::getContent();
-        foreach ($cart_items as $item) {
-            $order->products()->attach($item['id'], ['quantity' => $item->quantity]);
-        }
-
-        \Cart::clear();
-        return redirect('dashboard')->with('success_msg', 'Užsakymas pateiktas!');
-    }
-
-
 
     //CRUD FUNCTIONS
     /**

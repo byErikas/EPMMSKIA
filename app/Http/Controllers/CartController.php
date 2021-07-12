@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use App\Models\User;
 
 class CartController extends Controller
 {
@@ -15,25 +17,74 @@ class CartController extends Controller
         $products = Product::orderBy('name')->paginate(12);
 
         //PULL MOST PURCHASED ITEMS
-        $sql = 'SELECT product_id, SUM(quantity) AS TotalQuantity FROM order_product GROUP BY product_id ORDER BY SUM(quantity) DESC';
-        $results = DB::select(DB::raw($sql));
-        $top = collect([]);
-        $i = 0;
-        //FROM ARRAY ID'S TO MODEL COLLECTION
-        foreach ($results as $item) {
-            $i++;
-            if ($i == 5) {
-                break;
-            }
-            $model = Product::find($item->product_id);
-            $top->push($model);
+        $sql = 'SELECT product_id FROM order_product GROUP BY product_id ORDER BY SUM(quantity) DESC LIMIT 4';
+        $results = DB::select($sql);
+
+        $top_products = collect([]);
+        foreach ($results as $row) {
+            $id = $row->product_id;
+            $model = Product::find($id);
+            $top_products->push($model);
         }
 
-        //RETURNS
         return view('dashboard')->with([
             'products' => $products,
-            'top' => $top
+            'top' => $top_products
         ]);
+    }
+
+    public function purchase(Request $request)
+    {
+        if (!Auth::check()) {
+            $request->validate([
+                'name' => 'required',
+                'password' => 'required',
+                'email' => 'required|unique:users',
+                'address' => 'required',
+                'city' => 'required',
+                'state' => 'required',
+                'zip_code' => 'required'
+            ]);
+
+            $user = User::firstOrCreate(
+                [
+                    'email' => $request->input('email'),
+                ],
+                [
+                    'password' => bcrypt($request->input('password')),
+                    'name' => $request->input('name'),
+                    'address' => $request->input('address'),
+                    'city' => $request->input('city'),
+                    'state' => $request->input('state'),
+                    'zip_code' => $request->input('zip_code')
+                ]
+            );
+            Auth::login($user);
+        } else {
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'address' => 'required',
+                'city' => 'required',
+                'state' => 'required',
+                'zip_code' => 'required'
+            ]);
+            $user = Auth()->user();
+        }
+        $transaction_id = Str::random(12);
+        $order = $user->orders()
+            ->create([
+                'transaction_id' => $transaction_id,
+                'total' => \Cart::getTotal()
+            ]);
+
+        $cart_items = \Cart::getContent();
+        foreach ($cart_items as $item) {
+            $order->products()->attach($item['id'], ['quantity' => $item->quantity]);
+        }
+
+        \Cart::clear();
+        return redirect('dashboard')->with('success_msg', 'Užsakymas pateiktas!');
     }
 
     public function cart()
