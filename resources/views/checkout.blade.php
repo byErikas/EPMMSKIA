@@ -50,8 +50,10 @@
                                     <h3>{{ \Cart::getTotalQuantity() }} Produktai(-ų) krepšelyje</h3>
                                     <hr>
                                 @else
-                                    <h4>Nėra produktų krepšelyje</h4><br>
-                                    <a href="/" class="btn btn-dark">Toliau apsipirkinėti</a>
+                                    <div style="text-align: center;">
+                                        <h4>Nėra produktų krepšelyje</h4><br>
+                                        <a href="/" class="btn btn-dark">Toliau apsipirkinėti</a>
+                                    </div>
                                 @endif
 
                                 <div
