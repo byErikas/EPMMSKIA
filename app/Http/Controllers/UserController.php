@@ -16,6 +16,11 @@ class UserController extends Controller
         return view('profile', compact('user'));
     }
 
+    public function privacy()
+    {
+        return view('auth.privacy-policy');
+    }
+
     public function profileUpdate(Request $request)
     {
         $user = Auth::user();

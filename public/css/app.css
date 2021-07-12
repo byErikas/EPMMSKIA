@@ -11483,7 +11483,6 @@ object {
   vertical-align: middle;
 }
 
-
 /**
  * Constrain images and videos to the parent width and preserve
  * their intrinsic aspect ratio.
@@ -43037,6 +43036,10 @@ select {
 .required:after{
   content:'*';
   color:red;
+}
+
+div.footerflex{
+  margin-left: 10px;
 }
 
 @media (min-width: 640px) {

@@ -67,6 +67,7 @@ Route::get('/categories/{name}', 'App\Http\Controllers\CategoryController@return
 Route::get('/categories', 'App\Http\Controllers\CategoryController@allIndex')->name('category.index');
 Route::get('/items/{name}', 'App\Http\Controllers\ProductController@returnItem')->name('single.item');
 Route::post('/purchase', 'App\Http\Controllers\UserController@purchase')->name('order.purchase');
+Route::Get('/privacy', 'App\Http\Controllers\UserController@privacy')->name('global.privacy');
 //END GLOBAL SHOP ROUTES
 
 

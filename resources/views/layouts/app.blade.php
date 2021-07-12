@@ -42,9 +42,12 @@
             </div>
         </div>
 
-        <footer style="text-align: center; background: #404040; color: #999;">
-            <div>
-                © Erikas Byštautas, KT-8/2
+        <footer style="display: flex; flex-wrap: nowrap; align-items: center; justify-content: center; text-align: center; background: #404040; color: #999;">
+            <div class="footerflex">
+                © Erikas Byštautas, 2021
+            </div>
+            <div class="footerflex">
+                <a href="/privacy">Privatumo politika</a>
             </div>
         </footer>
     </div>
