@@ -7,6 +7,8 @@
 
     <x-slot name="slot">
         <link rel="stylesheet" href="{{ asset('css/item.css') }}">
+
+
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -47,44 +49,74 @@
                                     <h5>Populiarūs produktai:</h5>
                                 </span>
                             </div>
+                            {{-- SPLIDE --}}
                             <div class="row">
-                                @foreach ($top as $cat_item)
-                                    <div class="col-lg-3">
-                                        <div class="card" style="margin-bottom: 20px; height: auto;">
-                                            <img src="{{ $cat_item->img_path }}" class="card-img-top mx-auto"
-                                                style="height: 150px; width: 200px;display: block;"
-                                                alt="{{ $cat_item->img_path }}">
-                                            <div class="card-body">
-                                                <a href="/items/{{ $cat_item->slug }}">
-                                                    <h6 class="card-title">{{ $cat_item->name }}</h6>
-                                                </a>
-                                                <p>{{ $cat_item->price }}€</p>
-                                                <form action="{{ route('cart.store') }}" method="POST">
-                                                    {{ csrf_field() }}
-                                                    <input type="hidden" value="{{ $cat_item->id }}" id="id"
-                                                        name="id">
-                                                    <input type="hidden" value="{{ $cat_item->name }}" id="name"
-                                                        name="name">
-                                                    <input type="hidden" value="{{ $cat_item->price }}" id="price"
-                                                        name="price">
-                                                    <input type="hidden" value="{{ $cat_item->img_path }}" id="img"
-                                                        name="img">
-                                                    <input type="hidden" value="{{ $cat_item->slug }}" id="slug"
-                                                        name="slug">
-                                                    <input type="hidden" value="1" id="quantity" name="quantity">
-                                                    <div class="card-footer" style="background-color: white;">
-                                                        <div class="row">
-                                                            <button class="btn btn-secondary btn-sm"
-                                                                class="tooltip-test" title="add to cart" type="submit">
-                                                                <i class="fa fa-shopping-cart"></i> Į krepšelį
-                                                            </button>
+                                <div id="card-slider" class="splide">
+                                    <div class="splide__slider">
+                                        <div class="splide__track">
+                                            <ul class="splide__list">
+                                                @foreach ($top as $cat_item)
+                                                    <li class="splide__slide">
+                                                        <div class="col-lg">
+                                                            <div class="card">
+                                                                <div class="splide__slide__container">
+                                                                    <img src="{{ $cat_item->img_path }}"
+                                                                        class="card-img-top mx-auto"
+                                                                        style="height: 150px; width: 200px;display: block;"
+                                                                        alt="{{ $cat_item->img_path }}">
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <a href="/items/{{ $cat_item->slug }}">
+                                                                        <h6 class="card-title">{{ $cat_item->name }}
+                                                                        </h6>
+                                                                    </a>
+                                                                    <p>{{ $cat_item->price }}€</p>
+                                                                    <form action="{{ route('cart.store') }}"
+                                                                        method="POST">
+                                                                        {{ csrf_field() }}
+                                                                        <input type="hidden"
+                                                                            value="{{ $cat_item->id }}" id="id"
+                                                                            name="id">
+                                                                        <input type="hidden"
+                                                                            value="{{ $cat_item->name }}" id="name"
+                                                                            name="name">
+                                                                        <input type="hidden"
+                                                                            value="{{ $cat_item->price }}" id="price"
+                                                                            name="price">
+                                                                        <input type="hidden"
+                                                                            value="{{ $cat_item->img_path }}"
+                                                                            id="img" name="img">
+                                                                        <input type="hidden"
+                                                                            value="{{ $cat_item->slug }}" id="slug"
+                                                                            name="slug">
+                                                                        <input type="hidden" value="1" id="quantity"
+                                                                            name="quantity">
+                                                                        <div class="card-footer"
+                                                                            style="background-color: white;">
+                                                                            <div class="row">
+                                                                                <x-cart-button>
+                                                                                    Į krepšelį
+                                                                                </x-cart-button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </form>
+                                                    <li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                        <div class="splide__progress" style="margin-top: 0.5rem;">
+                                            <div class="splide__progress__bar">
                                             </div>
                                         </div>
                                     </div>
-                                @endforeach
+                                    <div class="p-6 bg-white border-b border-gray-200">
+                                    </div>
+
+                                </div>
+                                {{-- SPLIDE END --}}
                             </div>
                         </div>
                     @endif
@@ -122,10 +154,9 @@
                                                 <input type="hidden" value="1" id="quantity" name="quantity">
                                                 <div class="card-footer" style="background-color: white;">
                                                     <div class="row">
-                                                        <button class="btn btn-secondary btn-sm" class="tooltip-test"
-                                                            title="add to cart" type="submit">
-                                                            <i class="fa fa-shopping-cart"></i>Į krepšelį
-                                                        </button>
+                                                        <x-cart-button>
+                                                            Į krepšelį
+                                                        </x-cart-button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -144,7 +175,22 @@
                 </div>
             </div>
         </div>
-        </div>
-        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                new Splide('#card-slider', {
+                    type: 'loop',
+                    perPage: 4,
+                    autoplay: true,
+                    breakpoints: {
+                        600: {
+                            perPage: 1,
+                        }
+                    },
+                }).mount();
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+
     </x-slot>
 </x-app-layout>

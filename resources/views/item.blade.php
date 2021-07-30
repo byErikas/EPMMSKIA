@@ -72,10 +72,9 @@
                                                         <option value='4'>4</option>
                                                         <option value='5'>5</option>
                                                     </select>
-                                                    <button class="btn btn-block btn-success" type="submit"
-                                                        style="margin-left: 15px;">
+                                                    <x-cart-button style="margin-left: 1rem;">
                                                         Įvertinti
-                                                    </button>
+                                                    </x-cart-button>
                                                 </div>
                                             </form>
                                         @endif
@@ -98,9 +97,9 @@
                                         <input type="hidden" value="{{ $item->slug }}" id="slug" name="slug">
                                         <input type="hidden" value="1" id="quantity" name="quantity">
 
-                                        <button class="btn btn-block btn-success" type="submit">
+                                        <x-cart-button>
                                             Į krepšelį
-                                        </button>
+                                        </x-cart-button>
                                 </div>
                             </div>
                             </form>

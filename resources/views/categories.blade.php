@@ -25,7 +25,7 @@
                                     @foreach ($categories as $pro)
                                         <div class="col-lg-3">
                                             <div class="card" style="margin-bottom: 20px; height: auto;">
-                                                <div class="card-body">
+                                                <div class="card-body" style="display:flex; justify-content:center; align-items:center;">
                                                     <a href="/categories/{{ $pro->slug }}">
                                                         <h6 class="card-title">{{ $pro->name }}</h6>
                                                     </a>

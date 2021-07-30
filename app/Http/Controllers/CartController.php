@@ -17,7 +17,7 @@ class CartController extends Controller
         $products = Product::orderBy('name')->paginate(12);
 
         //PULL MOST PURCHASED ITEMS
-        $sql = 'SELECT product_id FROM order_product GROUP BY product_id ORDER BY SUM(quantity) DESC LIMIT 4';
+        $sql = 'SELECT product_id FROM order_product GROUP BY product_id ORDER BY SUM(quantity) DESC LIMIT 8';
         $results = DB::select($sql);
 
         $top_products = collect([]);

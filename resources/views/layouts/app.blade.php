@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/splide.css') }}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -42,7 +43,8 @@
             </div>
         </div>
 
-        <footer style="display: flex; flex-wrap: nowrap; align-items: center; justify-content: center; text-align: center; background: #404040; color: #999;">
+        <footer
+            style="display: flex; flex-wrap: nowrap; align-items: center; justify-content: center; text-align: center; background: #404040; color: #999;">
             <div class="footerflex">
                 © Erikas Byštautas, 2021
             </div>

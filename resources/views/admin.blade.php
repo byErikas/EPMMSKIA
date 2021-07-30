@@ -42,48 +42,52 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         Jūs esate Administratoriaus meniu.
                     </div>
-                    <div class="col-lg-3">
-                        <div class="card" style="margin-bottom: 20px; height: auto; margin-top: 20px;">
-                            <div class="card-body">
-                                <a href="/product">
-                                    <h6 class="card-title">Produktų valdymas</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-lg-3">
-                        <div class="card" style="margin-bottom: 20px; height: auto; margin-top: 20px;">
-                            <div class="card-body">
-                                <a href="/category">
-                                    <h6 class="card-title">Kategorijų valdymas</h6>
-                                </a>
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="card" style="margin-bottom: 20px; height: auto; margin-top: 20px;">
+                                    <div class="card-body" style="display:flex; justify-content:center; align-items:center;">
+                                        <a href="/product">
+                                            <h6 class="card-title">Produktų valdymas</h6>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="col-lg-3">
-                        <div class="card" style="margin-bottom: 20px; height: auto; margin-top: 20px;">
-                            <div class="card-body">
-                                <a href="/user">
-                                    <h6 class="card-title">Vartotojų valdymas</h6>
-                                </a>
+                            <div class="col-lg-3">
+                                <div class="card" style="margin-bottom: 20px; height: auto; margin-top: 20px;">
+                                    <div class="card-body" style="display:flex; justify-content:center; align-items:center;">
+                                        <a href="/category">
+                                            <h6 class="card-title">Kategorijų valdymas</h6>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="col-lg-3">
-                        <div class="card" style="margin-bottom: 20px; height: auto; margin-top: 20px;">
-                            <div class="card-body">
-                                <a href="/order">
-                                    <h6 class="card-title">Užsakymų valdymas</h6>
-                                </a>
+                            <div class="col-lg-3">
+                                <div class="card" style="margin-bottom: 20px; height: auto; margin-top: 20px;">
+                                    <div class="card-body" style="display:flex; justify-content:center; align-items:center;">
+                                        <a href="/user">
+                                            <h6 class="card-title">Vartotojų valdymas</h6>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="card" style="margin-bottom: 20px; height: auto; margin-top: 20px;">
+                                    <div class="card-body" style="display:flex; justify-content:center; align-items:center;">
+                                        <a href="/order">
+                                            <h6 class="card-title">Užsakymų valdymas</h6>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </x-slot>
 </x-app-layout>
