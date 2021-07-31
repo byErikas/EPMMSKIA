@@ -17,10 +17,9 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/splide.css') }}">
-
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/header.js') }}" defer></script>
 </head>
 
 <body class="font-sans antialiased bg-gray-100">
@@ -30,8 +29,13 @@
         <div style="display: flex; min-height: 100vh; flex-direction: column;">
             <!-- Page Heading -->
             <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
+                <div class="header" id="stickyHeader">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        {{ $header }}
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="scrollBar"></div>
+                    </div>
                 </div>
             </header>
 

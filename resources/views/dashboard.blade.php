@@ -6,9 +6,8 @@
     </x-slot>
 
     <x-slot name="slot">
-        <link rel="stylesheet" href="{{ asset('css/item.css') }}">
 
-
+        {{-- BODY START --}}
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -42,7 +41,6 @@
                     {{-- POPULAR ITEMS START --}}
                     {{-- IF THERE ARE TOP ITEMS CHECK --}}
                     @if (count($top) > 0)
-                        {{-- END IF THERE ARE TOP ITEMS CHECK --}}
                         <div class="p-6 bg-white border-b border-gray-200">
                             <div class="product-description">
                                 <span>
@@ -108,19 +106,18 @@
                                             </ul>
                                         </div>
                                         <div class="splide__progress" style="margin-top: 0.5rem;">
-                                            <div class="splide__progress__bar">
-                                            </div>
+                                            <div class="splide__progress__bar"></div>
                                         </div>
                                     </div>
-                                    <div class="p-6 bg-white border-b border-gray-200">
-                                    </div>
-
+                                    <div class="p-2.5 bg-white border-b border-gray-200"></div>
                                 </div>
                                 {{-- SPLIDE END --}}
                             </div>
                         </div>
                     @endif
+                    {{-- END IF THERE ARE TOP ITEMS CHECK --}}
                     {{-- POPULAR ITEMS END --}}
+
                     {{-- ALL ITEMS START --}}
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="product-description">
@@ -167,6 +164,7 @@
                         </div>
                     </div>
                     {{-- ALL ITEMS END --}}
+
                     {{-- PAGINATION LINKS --}}
                     <div class="d-flex justify-content-center" style="margin-top: 15px;">
                         {!! $products->links() !!}
@@ -175,6 +173,7 @@
                 </div>
             </div>
         </div>
+        {{-- BODY END --}}
 
         <script>
             document.addEventListener('DOMContentLoaded', function() {
@@ -191,6 +190,5 @@
             });
         </script>
         <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
-
     </x-slot>
 </x-app-layout>

@@ -1,6 +1,10 @@
+@import "header.css";
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@import "splide.css";
+@import "item.css";
 
 .required:after{
     content:'*';
